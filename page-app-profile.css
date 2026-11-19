@@ -1,0 +1,10 @@
+/* Экран: Кабинет — мой бизнес (C10-Profile) */
+body{margin:0;font-family:Onest,system-ui,sans-serif;color:#0B1A33}a{color:#1F5EFF}a:hover{color:#1747D6}
+.pr{display:grid;grid-template-columns:28px 1fr auto auto;gap:14px;align-items:center;padding:14px 0;border-top:1px solid #E3E9F4}
+.pr .n{width:28px;height:28px;border-radius:8px;background:#F4F7FC;font-size:12px;font-weight:600;color:#4A5A75;display:inline-flex;align-items:center;justify-content:center}
+.s-me{font-size:12px;font-weight:600;color:#1747D6;background:#EEF3FF;border-radius:999px;padding:3px 9px;white-space:nowrap}
+.s-you{font-size:12px;font-weight:600;color:#0E8A43;background:#E3F5EA;border-radius:999px;padding:3px 9px;white-space:nowrap}
+.s-typ{font-size:12px;font-weight:500;color:#4A5A75;background:#EEF1F6;border-radius:999px;padding:3px 9px;white-space:nowrap}
+.s-ask{font-size:12px;font-weight:600;color:#B76E00;background:#FFF4DE;border-radius:999px;padding:3px 9px;white-space:nowrap}
+.blk{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#6B7A93;padding:18px 0 4px}
+.int{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px;border-radius:14px;background:#F4F7FC}

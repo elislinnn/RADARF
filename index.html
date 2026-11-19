@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Антикризисный радар — лендинг</title>
+<meta name="description" content="Антикризисный радар: сколько курс, ставка и цены стоят вашему бизнесу — в рублях прибыли.">
+<meta name="theme-color" content="#1F5EFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>(function(){var q=location.search;if(q.indexOf('view=desktop')<0&&window.innerWidth<768)location.replace('m-landing.html'+q+location.hash);})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="radar.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="page-index.css">
+</head>
+<body class="page-index view-desktop">
+<div id="dc-app"></div>
+<noscript><p style="font-family:sans-serif;padding:24px">Для работы сайта включите JavaScript.</p></noscript>
+<template id="dc-root">
+<div class="{{rootCls}}" style="background: #fff; min-height: 100vh">
+
+<!-- L-00 Шапка -->
+<header class="{{hdrCls}}">
+<div class="wrap" style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; position: relative">
+<a href="#top" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #0B1A33">
+<svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><defs><linearGradient id="lgA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4C82FF"></stop><stop offset="1" stop-color="#1747D6"></stop></linearGradient></defs><rect width="36" height="36" rx="11" fill="url(#lgA)"></rect><path d="M13 27V9h6.5a5.5 5.5 0 0 1 0 11H13" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M23 26a8 8 0 0 0 4.5-3.5" stroke="#fff" stroke-opacity=".6" stroke-width="2" fill="none" stroke-linecap="round"></path></svg>
+<span style="font-weight: 700; font-size: 17px; letter-spacing: -0.01em; white-space: nowrap">Антикризисный радар</span>
+</a>
+<nav aria-label="Основное меню" style="display: flex; gap: 2px; align-items: center; flex: none">
+<button class="navl" onClick="{{toggleMega}}" onMouseEnter="{{openMega}}" aria-expanded="{{megaAria}}">Возможности ▾</button>
+<a class="navl" href="#how">Как мы считаем</a>
+<a class="navl" href="#accuracy">Точность</a>
+<a class="navl" href="#pricing">Тарифы</a>
+<a class="navl nav-opt" href="#pricing">Для банков и ЦМБ</a>
+</nav>
+<div style="display: flex; gap: 8px; align-items: center">
+<a class="btn btn-ghost btn-sm" style="white-space: nowrap" href="login.html">Войти</a>
+<a class="btn btn-primary btn-sm" style="white-space: nowrap" href="signup.html">Попробовать бесплатно</a>
+</div>
+<template data-dc="if" value="{{mega}}">
+<div class="mega" onMouseLeave="{{closeMega}}" style="padding-top: 8px">
+<div class="mega-veil"></div>
+<div style="background: #fff; border-radius: 24px; box-shadow: 0 24px 48px rgba(11,26,51,.14); padding: 20px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+<div style="display: flex; flex-direction: column"><div class="cap" style="padding: 8px 14px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase">Следить</div>
+<a class="mega-a" href="#top"><b style="font-size: 15px">Индекс давления</b><span class="cap">Одна цифра: насколько среда против вас</span></a>
+<a class="mega-a" href="#how" style="animation-delay: .03s"><b style="font-size: 15px">Сигналы в рублях</b><span class="cap">1–3 действия в неделю</span></a>
+<a class="mega-a" href="#more" style="animation-delay: .06s"><b style="font-size: 15px">Календарь</b><span class="cap">ЦБ, налоги, индексации</span></a>
+<a class="mega-a" href="#more" style="animation-delay: .09s"><b style="font-size: 15px">Дайджест по понедельникам</b><span class="cap">2 пункта из 40 новостей</span></a></div>
+<div style="display: flex; flex-direction: column"><div class="cap" style="padding: 8px 14px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase">Решать</div>
+<a class="mega-a" href="#whatif"><b style="font-size: 15px">Что если</b><span class="cap">Ползунки и сценарии ЦБ</span></a>
+<a class="mega-a" href="#why" style="animation-delay: .03s"><b style="font-size: 15px">Спросить радар</b><span class="cap">Чат, который считает</span></a>
+<a class="mega-a" href="#more" style="animation-delay: .06s"><b style="font-size: 15px">Господдержка</b><span class="cap">Под ваш ОКВЭД и регион</span></a>
+<a class="mega-a" href="#more" style="animation-delay: .09s"><b style="font-size: 15px">Отчёт «Что радар дал вам»</b><span class="cap">Раз в месяц</span></a></div>
+<a href="#timemachine" style="text-decoration: none; color: #fff; background: #0A1530; border-radius: 18px; padding: 20px; display: flex; flex-direction: column; gap: 10px">
+<span class="chip" style="align-self: flex-start; background: rgba(255,255,255,.12); color: #fff">Новое</span>
+<b style="font-size: 18px">Машина времени</b>
+<span style="font-size: 14px; color: rgba(255,255,255,.75)">Проверьте радар на 2022–2024 годах: когда он предупредил бы вас</span>
+<svg viewBox="0 0 220 60" width="100%" height="60" aria-hidden="true"><polyline points="0,50 30,48 40,8 60,22 80,34 110,40 140,40 160,30 180,24 200,14 220,10" fill="none" stroke="#7FA6FF" stroke-width="2"></polyline><circle cx="160" cy="30" r="4" fill="#fff"></circle></svg>
+</a>
+</div>
+</div>
+</template>
+</div>
+</header>
+
+<!-- L-01 Герой -->
+<section id="top" class="hero">
+<div class="blob" style="width: 520px; height: 520px; background: #8FB1FF; left: -120px; top: 40px; animation: drift1 22s ease-in-out infinite alternate"></div>
+<div class="blob" style="width: 460px; height: 460px; background: #9EE7FF; right: -80px; top: 120px; animation: drift2 26s ease-in-out infinite alternate"></div>
+<div class="blob" style="width: 380px; height: 380px; background: #C7B8FF; left: 45%; top: 360px; animation: drift1 18s ease-in-out infinite alternate-reverse"></div>
+<div class="rings"><div class="sweep"></div></div>
+<div class="wrap" style="position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px">
+<span class="chip chip-line a-rise" style="height: 34px; padding: 0 14px 0 10px; gap: 8px"><span class="dot ping" style="background: #0E8A43"></span>Ключевая ставка 14% · следующее заседание ЦБ 18 декабря</span>
+<h1 class="display" style="font-size: 68px; line-height: 74px; max-width: 1120px; white-space: nowrap">
+<span class="mask"><span style="animation-delay: .1s">Сколько курс и ставка стоят</span></span>
+<span class="mask"><span style="animation-delay: .19s">именно вам — <span style="color: #1F5EFF">в рублях</span></span></span>
+</h1>
+<p class="lead a-rise" style="max-width: 700px; animation-delay: .4s">Радар каждый день следит за курсами, ставкой ЦБ, инфляцией и налогами и присылает 1–3 действия в неделю — с эффектом в рублях прибыли вашего бизнеса.</p>
+<div class="row" style="justify-content: center">
+<span class="chip chip-line a-rise" style="animation-delay: .55s">Числа считает код, ИИ только объясняет</span>
+<span class="chip chip-line a-rise" style="animation-delay: .61s">Без ИНН и анкет — одной фразой</span>
+<span class="chip chip-line a-rise" style="animation-delay: .67s">Первый расчёт за 2 минуты</span>
+</div>
+<div class="row a-rise" style="justify-content: center; gap: 12px; animation-delay: .7s">
+<a class="btn btn-primary btn-lg" href="signup.html">Получить снимок бизнеса</a>
+<a class="btn btn-secondary btn-lg" href="app.html">Смотреть демо кофейни</a>
+</div>
+</div>
+<div class="stage">
+<div class="mock tilt" aria-label="Пример кабинета: снимок бизнеса кофейни" role="img">
+<div style="display: flex; height: 100%">
+<div style="width: 180px; background: #fff; border-right: 1px solid #E3E9F4; padding: 18px 12px; display: flex; flex-direction: column; gap: 6px; text-align: left">
+<div style="height: 30px; border-radius: 8px; background: #EEF3FF; color: #1747D6; font-size: 13px; font-weight: 600; display: flex; align-items: center; padding: 0 10px">Снимок</div>
+<div style="height: 30px; font-size: 13px; color: #4A5A75; display: flex; align-items: center; padding: 0 10px">Сигналы <span style="margin-left: auto; background: #1F5EFF; color: #fff; border-radius: 9px; font-size: 11px; padding: 1px 6px">2</span></div>
+<div style="height: 30px; font-size: 13px; color: #4A5A75; display: flex; align-items: center; padding: 0 10px">Что если</div>
+<div style="height: 30px; font-size: 13px; color: #4A5A75; display: flex; align-items: center; padding: 0 10px">Календарь</div>
+<div style="height: 30px; font-size: 13px; color: #4A5A75; display: flex; align-items: center; padding: 0 10px">Спросить радар</div>
+</div>
+<div style="flex: 1; background: #F4F7FC; padding: 22px; display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 16px; text-align: left; align-content: start">
+<div style="grid-column: 1 / 3; display: flex; justify-content: space-between; align-items: center"><b style="font-size: 20px">Доброе утро, Анна</b><span class="chip chip-line num">CNY 12,38 ₽ · ставка 14%</span></div>
+<div class="card-blue" style="display: flex; flex-direction: column; gap: 6px">
+<span class="cap">Индекс давления на бизнес</span>
+<svg viewBox="0 0 200 110" width="100%" height="120" aria-hidden="true"><path d="M10 100a90 90 0 0 1 180 0" fill="none" class="gauge-track" stroke-width="14" stroke-linecap="round"></path><path d="M10 100a90 90 0 0 1 180 0" fill="none" class="gauge-val" stroke-width="14" style="--to: 102"></path><text x="100" y="92" text-anchor="middle" fill="#fff" font-size="40" font-weight="700" font-family="Onest, system-ui, sans-serif">64</text></svg>
+<span style="font-size: 13px">+3 за неделю · главное — валюта</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div class="card" style="padding: 14px 16px; display: flex; justify-content: space-between; align-items: center"><div><div class="cap">Юань +2,8% за 30 дней</div><b style="font-size: 15px">Зафиксировать закупку зерна</b></div><b class="loss num" style="font-size: 20px; white-space: nowrap">−6 900 ₽</b></div>
+<div class="card" style="padding: 14px 16px; display: flex; justify-content: space-between; align-items: center"><div><div class="cap">Аренда: индексация с 1 января</div><b style="font-size: 15px">Обсудить до 15 декабря</b></div><b class="loss num" style="font-size: 20px; white-space: nowrap">−11 000 ₽</b></div>
+<div class="card" style="padding: 14px 16px; display: flex; justify-content: space-between; align-items: center"><div><div class="cap">Заседание ЦБ 18 декабря</div><b style="font-size: 15px">Не фиксировать ставку до решения</b></div><b class="gain num" style="font-size: 20px; white-space: nowrap">+2 100 ₽</b></div>
+</div>
+<div class="card" style="grid-column: 1 / 3; padding: 14px 16px; display: flex; gap: 18px; align-items: center; white-space: nowrap; overflow: hidden"><span class="cap">События</span><span class="small">18.12 · Заседание ЦБ</span><span class="small">01.01 · Индексация аренды</span><span class="small">Фев · Китай закрыт</span></div>
+</div>
+</div>
+</div>
+<div class="float" style="left: 560px; top: 392px; animation-delay: -2s; z-index: 2"><div class="card-sh a-pop" style="padding: 12px 16px; text-align: left; animation-delay: 1.4s"><div class="cap">Вилка 80%</div><b class="num" style="font-size: 16px">−5 500…−8 800 ₽</b></div></div>
+<div class="float" style="left: 64px; top: 404px; z-index: 2"><div class="card-sh a-pop" style="padding: 12px 16px; text-align: left; display: flex; gap: 10px; align-items: center; animation-delay: 1.6s"><svg width="34" height="34" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15" fill="none" stroke="#DCE6FF" stroke-width="4"></circle><circle cx="18" cy="18" r="15" fill="none" stroke="#1F5EFF" stroke-width="4" stroke-dasharray="94" stroke-dashoffset="26" transform="rotate(-90 18 18)" stroke-linecap="round"></circle></svg><div><div class="cap">Точность профиля</div><b style="font-size: 16px">72%</b></div></div></div>
+<div class="{{phoneCls}}">
+<div class="phone-in">
+<div style="position: absolute; top: 12px; left: 50%; width: 90px; height: 26px; margin-left: -45px; border-radius: 13px; background: #0B1A33"></div>
+<div style="padding: 60px 14px 0; text-align: left">
+<div class="cap" style="text-align: center; margin-bottom: 4px">четверг, 19 ноября</div>
+<div class="num" style="text-align: center; font-size: 56px; font-weight: 600; letter-spacing: -0.02em; color: #0B1A33">10:14</div>
+<template data-dc="if" value="{{evenTick}}">
+<div class="a-pop" style="margin-top: 22px; background: rgba(255,255,255,.92); border-radius: 18px; padding: 12px; box-shadow: 0 8px 20px rgba(11,26,51,.12); display: flex; gap: 10px">
+<div style="width: 34px; height: 34px; border-radius: 9px; background: #1F5EFF; flex: none"></div>
+<div style="font-size: 12px; line-height: 16px"><b>Радар · сейчас</b><br>{{note.t}}<br><span style="color: #4A5A75">{{note.s}}</span></div>
+</div>
+</template>
+<template data-dc="if" value="{{oddTick}}">
+<div class="a-pop" style="margin-top: 22px; background: rgba(255,255,255,.92); border-radius: 18px; padding: 12px; box-shadow: 0 8px 20px rgba(11,26,51,.12); display: flex; gap: 10px">
+<div style="width: 34px; height: 34px; border-radius: 9px; background: #1F5EFF; flex: none"></div>
+<div style="font-size: 12px; line-height: 16px"><b>Радар · сейчас</b><br>{{note.t}}<br><span style="color: #4A5A75">{{note.s}}</span></div>
+</div>
+</template>
+<div style="margin-top: 10px; background: rgba(255,255,255,.7); border-radius: 18px; padding: 12px; font-size: 12px; line-height: 16px; color: #4A5A75"><b style="color: #0B1A33">Радар · 2 ч назад</b><br>{{prevNote.t}}</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- L-02 Источники -->
+<section style="padding: 40px 0 0">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 16px; align-items: center">
+<span class="cap" style="font-weight: 600; letter-spacing: .06em; text-transform: uppercase">Только открытые официальные данные</span>
+<div class="marq-box" style="width: 100%">
+<div class="marq" style="font-size: 22px; font-weight: 600; color: #8A97AD">
+<span>Банк России</span><span>·</span><span>Мосбиржа</span><span>·</span><span>Росстат</span><span>·</span><span>ФНС</span><span>·</span><span>Минэкономразвития</span><span>·</span><span>Порталы господдержки</span><span>·</span><span>Региональные СМИ</span><span>·</span>
+<span>Банк России</span><span>·</span><span>Мосбиржа</span><span>·</span><span>Росстат</span><span>·</span><span>ФНС</span><span>·</span><span>Минэкономразвития</span><span>·</span><span>Порталы господдержки</span><span>·</span><span>Региональные СМИ</span><span>·</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- L-03 Почему сейчас -->
+<section class="sec" style="padding-top: 100px">
+<div class="wrap" ref="{{statsRef}}">
+<div class="rv" style="display: flex; flex-direction: column; gap: 12px; max-width: 720px; margin-bottom: 48px">
+<span class="eyebrow">Почему сейчас</span>
+<h2 class="h1">Внешняя среда меняет вашу прибыль каждую неделю</h2>
+</div>
+<div class="grid3">
+<div class="card rv" style="padding: 32px"><div class="num" style="font-size: 72px; line-height: 76px; font-weight: 700; letter-spacing: -0.03em; color: #1F5EFF">{{s1}}%</div><p class="body" style="margin-top: 12px">ключевая ставка — дорогие кредиты и оборотка</p><p class="cap" style="margin-top: 8px">Банк России, 23.10.2026</p></div>
+<div class="card rv" style="padding: 32px"><div class="num" style="font-size: 72px; line-height: 76px; font-weight: 700; letter-spacing: -0.03em; color: #1F5EFF">+{{s2}}%</div><p class="body" style="margin-top: 12px">юань с 18 мая — дорожают закупки из Китая</p><p class="cap" style="margin-top: 8px">Курс ЦБ 12,38 ₽ на 11.11.2026</p></div>
+<div class="card rv" style="padding: 32px"><div class="num" style="font-size: 72px; line-height: 76px; font-weight: 700; letter-spacing: -0.03em; color: #1F5EFF">{{s3}}%</div><p class="body" style="margin-top: 12px">инфляция за год — растут аренда, зарплаты, сырьё</p><p class="cap" style="margin-top: 8px">Минэкономразвития, 09.11.2026</p></div>
+</div>
+</div>
+</section>
+
+<!-- L-04 Как это работает -->
+<section id="how" class="sec" style="background: #F4F7FC">
+<div class="wrap" style="display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 64px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 24px">
+<span class="eyebrow">Как это работает</span>
+<h2 class="h1">Три шага — и радар следит за вашим бизнесом</h2>
+<div style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px">
+<template data-dc="for" list="{{steps}}" as="st">
+<button class="{{st.cls}}" onClick="{{st.pick}}">
+<span class="num" style="width: 40px; height: 40px; border-radius: 50%; background: #1F5EFF; color: #fff; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; flex: none">{{st.n}}</span>
+<span style="flex: 1"><b style="font-size: 20px; display: block">{{st.t}}</b><span class="body muted" style="display: block; margin-top: 4px">{{st.d}}</span>
+<template data-dc="if" value="{{st.on}}"><span class="prog" style="display: block"><i></i></span></template></span>
+</button>
+</template>
+</div>
+</div>
+<div style="width: 300px; height: 600px; border-radius: 48px; background: #0B1A33; padding: 10px; margin: 0 auto; box-shadow: 0 40px 70px rgba(11,26,51,.24)">
+<div style="width: 100%; height: 100%; border-radius: 40px; background: #fff; position: relative; overflow: hidden">
+<div style="position: absolute; top: 12px; left: 50%; width: 90px; height: 26px; margin-left: -45px; border-radius: 13px; background: #0B1A33; z-index: 2"></div>
+<template data-dc="if" value="{{step0}}">
+<div class="scr">
+<b style="font-size: 20px">Расскажите о бизнесе</b>
+<div style="border-radius: 14px; box-shadow: inset 0 0 0 2px #1F5EFF; padding: 12px; font-size: 15px; line-height: 22px; min-height: 120px">{{typedText}}<span class="caret"></span></div>
+<template data-dc="if" value="{{typedDone}}">
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<span class="chip a-pop">Кофейня</span><span class="chip a-pop" style="animation-delay: .08s">Новосибирск</span><span class="chip a-pop" style="animation-delay: .16s">2 точки</span><span class="chip a-pop" style="animation-delay: .24s">Закупки в юанях</span><span class="chip a-pop" style="animation-delay: .32s">Кредит 2,5 млн · плавающая</span>
+</div>
+<span class="cap a-fade" style="animation-delay: .4s">Точность профиля 58% → уточним 2 вопросами</span>
+</template>
+</div>
+</template>
+<template data-dc="if" value="{{step1}}">
+<div class="scr">
+<b style="font-size: 20px">Радар считает</b>
+<div class="card a-pop" style="padding: 12px"><div class="cap">Событие</div><b>Юань +2,8% за 30 дней</b></div>
+<div style="width: 2px; height: 14px; background: #1F5EFF; margin-left: 20px"></div>
+<div class="card a-pop" style="padding: 12px; animation-delay: .15s"><div class="cap">Канал</div><b>Закупки в юанях — 42% себестоимости</b></div>
+<div style="width: 2px; height: 14px; background: #1F5EFF; margin-left: 20px"></div>
+<div class="card a-pop" style="padding: 12px; animation-delay: .3s"><div class="cap">Строка прибыли</div><b>Себестоимость — 39% выручки</b></div>
+<div style="width: 2px; height: 14px; background: #1F5EFF; margin-left: 20px"></div>
+<div class="card-blue a-pop" style="padding: 12px; animation-delay: .45s"><div class="cap">Эффект</div><b class="num" style="font-size: 22px">−6 900 ₽ в месяц</b></div>
+</div>
+</template>
+<template data-dc="if" value="{{step2}}">
+<div class="scr" style="background: linear-gradient(180deg,#DCE6FF,#fff 70%)">
+<div class="num" style="text-align: center; font-size: 48px; font-weight: 600; margin-top: 10px">09:41</div>
+<div class="a-pop" style="background: #fff; border-radius: 18px; padding: 14px; box-shadow: 0 10px 24px rgba(11,26,51,.12); display: flex; flex-direction: column; gap: 8px; animation-delay: .2s">
+<span class="cap">Telegram · Радар</span>
+<b style="font-size: 15px; line-height: 20px">Юань пересёк ваш порог 2,5%</b>
+<span style="font-size: 14px">−6 900 ₽/мес. Зафиксируйте закупку зерна на 2 месяца.</span>
+<div style="display: flex; gap: 6px"><span class="btn btn-secondary btn-sm" style="flex: 1">Почему?</span><span class="btn btn-primary btn-sm" style="flex: 1">Применить</span></div>
+</div>
+</div>
+</template>
+</div>
+</div>
+</div>
+</section>
+
+<!-- L-05 Одно событие — три бизнеса -->
+<section class="sec">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 32px; align-items: center">
+<div class="rv" style="text-align: center; display: flex; flex-direction: column; gap: 12px; align-items: center">
+<span class="eyebrow">Персонально</span>
+<h2 class="h1">Юань +5% за месяц. У каждого — своя сумма</h2>
+</div>
+<div class="pills" role="tablist">
+<template data-dc="for" list="{{bizTabs}}" as="b"><button class="{{b.cls}}" role="tab" onClick="{{b.pick}}">{{b.name}}</button></template>
+</div>
+<div class="bizcard" style="width: 100%; background: {{biz.bg}}">
+<div style="position: absolute; right: -40px; bottom: -60px; font-size: 320px; line-height: 1; font-weight: 800; color: rgba(255,255,255,.18)" aria-hidden="true">{{biz.glyph}}</div>
+<div style="position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 40px; align-items: center">
+<div style="color: #fff; display: flex; flex-direction: column; gap: 14px">
+<span class="chip" style="align-self: flex-start; background: rgba(255,255,255,.18); color: #fff">{{biz.tag}}</span>
+<h3 class="h2" style="color: #fff">{{biz.title}}</h3>
+<p class="lead" style="color: rgba(255,255,255,.85)">{{biz.chan}}</p>
+<a class="btn btn-white" href="signup.html" style="align-self: flex-start; margin-top: 8px">Посчитать для моего бизнеса</a>
+</div>
+<div class="card-sh" style="border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+<span class="cap">Эффект на прибыль в месяц</span>
+<div class="num loss" style="font-size: 56px; line-height: 60px; font-weight: 700; letter-spacing: -0.02em">{{shownFmt}} ₽</div>
+<div class="divider"></div>
+<span class="cap">Что сделать</span>
+<b style="font-size: 18px; line-height: 26px">{{biz.act}}</b>
+<span class="chip chip-grey" style="align-self: flex-start">{{biz.note}}</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- L-06 Почему? -->
+<section id="why" class="sec" style="background: #F4F7FC">
+<div class="wrap" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 64px; align-items: center">
+<div class="rv" style="display: flex; flex-direction: column; gap: 16px">
+<span class="eyebrow">«Почему?» и «Спросить радар»</span>
+<h2 class="h1">Числа считает код. ИИ объясняет. Решаете вы</h2>
+<p class="lead">Каждая цифра раскрывается до формулы и источника. Модель не придумывает чисел: она пересказывает расчёт, а код проверяет каждое число в тексте.</p>
+<a class="btn btn-secondary" href="app-signal.html" style="align-self: flex-start">Как мы считаем</a>
+</div>
+<div class="card-sh" ref="{{chatRef}}" style="border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 14px; min-height: 470px">
+<div class="spread"><b>Спросить радар</b><span class="chip chip-grey">кофейня Анны</span></div>
+<template data-dc="if" value="{{chat1}}"><div class="bubble-q">Почему в декабре прибыль может упасть?</div></template>
+<template data-dc="if" value="{{chatDots}}"><div class="bubble-a dots" aria-label="Радар считает"><i></i><i></i><i></i></div></template>
+<template data-dc="if" value="{{chat2}}"><div class="bubble-a">{{answerText}}</div></template>
+<template data-dc="if" value="{{chat3}}">
+<div class="chain">
+<div class="node"><div class="cap">Событие</div><b class="small">Юань +2,8%</b></div><div class="link" style="animation-delay: .25s"></div>
+<div class="node" style="animation-delay: .5s"><div class="cap">Канал</div><b class="small">Юань — 42% закупок</b></div><div class="link" style="animation-delay: .75s"></div>
+<div class="node" style="animation-delay: 1s"><div class="cap">Строка</div><b class="small">39% выручки</b></div><div class="link" style="animation-delay: 1.25s"></div>
+<div class="node" style="animation-delay: 1.5s; background: #1F5EFF; color: #fff; box-shadow: none"><div class="cap" style="color: rgba(255,255,255,.8)">Эффект</div><b class="small num">−6 900 ₽/мес</b></div>
+</div>
+<button class="btn btn-ghost btn-sm" onClick="{{replayChat}}" style="align-self: flex-start">↻ Повторить</button>
+</template>
+</div>
+</div>
+</section>
+
+<!-- L-07 Вилка -->
+<section class="sec">
+<div class="wrap" style="display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 64px; align-items: center" ref="{{forkRef}}">
+<div class="card" style="border-radius: 28px; padding: 32px; display: flex; flex-direction: column; gap: 16px">
+<div class="spread"><b>Распределение эффекта</b><span class="chip num">сценариев: {{scCount}}</span></div>
+<div style="display: flex; align-items: flex-end; gap: 3px; height: 170px">
+<template data-dc="for" list="{{bars}}" as="br"><div class="bar" style="transform: scaleY({{br.s}}); background: {{br.c}}"></div></template>
+</div>
+<div class="spread num" style="font-size: 14px"><span class="muted">{{forkLo}} ₽</span><b style="font-size: 18px">{{forkMid}} ₽</b><span class="muted">{{forkHi}} ₽</span></div>
+<span class="cap">Синим — 80% сценариев. Метод Монте-Карло: 2 000 прогонов формулы по диапазонам вашего профиля.</span>
+</div>
+<div class="rv" style="display: flex; flex-direction: column; gap: 16px">
+<span class="eyebrow">Честно о точности</span>
+<h2 class="h1">Вилка вместо одного числа</h2>
+<p class="lead">«≈ −6 900 ₽, скорее всего от −5 500 до −8 800 ₽». И подсказка, какой ответ сузит вилку сильнее всего.</p>
+<button class="btn btn-primary" onClick="{{toggleNarrow}}" style="align-self: flex-start">{{narrowLabel}}</button>
+</div>
+</div>
+</section>
+
+<!-- L-08 Что если -->
+<section id="whatif" class="sec" style="background: #0A1530; color: #fff">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 40px">
+<div class="rv" style="display: flex; flex-direction: column; gap: 12px; max-width: 720px">
+<span class="eyebrow" style="color: #9FC0FF">Что если</span>
+<h2 class="h1" style="color: #fff">Подвигайте курс — увидите свой запас</h2>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px">
+<div style="background: rgba(255,255,255,.06); border-radius: 28px; padding: 32px; display: flex; flex-direction: column; gap: 24px">
+<div class="pills" style="background: rgba(255,255,255,.08)">
+<template data-dc="for" list="{{scenarios}}" as="sc"><button class="{{sc.cls}}" onClick="{{sc.pick}}" style="color: {{sc.color}}">{{sc.name}}</button></template>
+</div>
+<label class="field"><span class="spread"><span class="label">Юань к сегодняшнему курсу</span><b class="num">{{yuanLbl}}</b></span><input class="rng" type="range" min="-10" max="20" step="1" value="{{yuan}}" onChange="{{onYuan}}"></label>
+<label class="field"><span class="spread"><span class="label">Ключевая ставка</span><b class="num">{{rateLbl}}</b></span><input class="rng" type="range" min="8" max="20" step="0.5" value="{{rate}}" onChange="{{onRate}}"></label>
+<label class="field"><span class="spread"><span class="label">Индексация аренды</span><b class="num">{{rentLbl}}</b></span><input class="rng" type="range" min="0" max="20" step="1" value="{{rent}}" onChange="{{onRent}}"></label>
+<span class="cap" style="color: rgba(255,255,255,.6)">Демо-профиль кофейни: выручка 1,5 млн ₽/мес, себестоимость 39%, юань — 42% закупок, кредит 2,5 млн ₽ с плавающей ставкой.</span>
+</div>
+<div style="background: #fff; color: #0B1A33; border-radius: 28px; padding: 32px; display: flex; flex-direction: column; gap: 18px">
+<span class="cap">Прибыль в месяц</span>
+<div class="spread"><div class="num" style="font-size: 56px; line-height: 60px; font-weight: 700; letter-spacing: -0.02em">{{profitFmt}} ₽</div><span class="{{deltaCls}}" style="font-size: 16px">{{deltaFmt}} ₽</span></div>
+<div class="divider"></div>
+<div class="spread"><span class="body">Безубыточная цена капучино</span><b class="num" style="font-size: 24px">{{beFmt}} ₽ <span class="muted" style="font-size: 15px; font-weight: 500">при цене 230 ₽</span></b></div>
+<div style="height: 12px; border-radius: 6px; background: #EEF3FF; position: relative; overflow: hidden"><div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{beW}}; background: #1F5EFF; border-radius: 6px; transition: width .24s"></div></div>
+<span class="cap">Куда уходят деньги в сценарии</span>
+<template data-dc="for" list="{{flows}}" as="f">
+<div style="display: grid; grid-template-columns: 140px 1fr 110px; gap: 12px; align-items: center; font-size: 14px"><span>{{f.name}}</span><div style="height: 10px; border-radius: 5px; background: #F4F7FC"><div style="height: 100%; width: {{f.w}}; background: {{f.c}}; border-radius: 5px; transition: width .24s"></div></div><b class="num" style="text-align: right; color: {{f.c}}">{{f.v}}</b></div>
+</template>
+</div>
+</div>
+</div>
+</section>
+
+<!-- L-09 Машина времени -->
+<section id="timemachine" class="sec">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 32px">
+<div class="rv spread" style="align-items: flex-end">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 640px"><span class="eyebrow">Машина времени</span><h2 class="h1">Проверьте нас на истории</h2><p class="lead">Радар «проигрывает» 2022–2024 годы на профиле кофейни и показывает, когда выдал бы сигнал.</p></div>
+<a class="btn btn-secondary" href="app-time-machine.html">Запустить машину времени</a>
+</div>
+<div class="card" style="border-radius: 28px; padding: 32px; display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<svg viewBox="0 0 720 240" width="100%" height="240" role="img" aria-label="Ключевая ставка Банка России, 2022–2024">
+<line x1="0" y1="220" x2="720" y2="220" stroke="#E3E9F4"></line>
+<line x1="0" y1="120" x2="720" y2="120" stroke="#E3E9F4" stroke-dasharray="3 4"></line>
+<text x="0" y="114" font-size="11" fill="#6B7A93" font-family="Onest, system-ui, sans-serif">15%</text>
+<text x="0" y="236" font-size="11" fill="#6B7A93" font-family="Onest, system-ui, sans-serif">2022</text><text x="240" y="236" font-size="11" fill="#6B7A93" font-family="Onest, system-ui, sans-serif">2023</text><text x="480" y="236" font-size="11" fill="#6B7A93" font-family="Onest, system-ui, sans-serif">2024</text>
+<path d="{{ratePath}}" fill="none" stroke="#1F5EFF" stroke-width="3" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" style="animation: drawline 2s var(--io) .3s forwards"></path>
+<line x1="{{tmX}}" y1="20" x2="{{tmX}}" y2="220" stroke="#0B1A33" stroke-width="1.5" stroke-dasharray="4 4"></line>
+<circle cx="{{tmX}}" cy="{{tmY}}" r="7" fill="#fff" stroke="#1F5EFF" stroke-width="3"></circle>
+<path d="M370 118l8 8-8 8-8-8z" fill="#1F5EFF"></path>
+</svg>
+<label class="field"><span class="label">Перетащите бегунок: месяц {{tmMonth}}</span><input class="rng" type="range" min="0" max="35" step="1" value="{{tm}}" onChange="{{onTm}}"></label>
+<span class="cap">Ключевая ставка Банка России, 2022–2024. Ромб — когда радар выдал бы сигнал по ставке (июль 2023).</span>
+</div>
+<div style="background: #F4F7FC; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<span class="cap">Что радар сказал бы в этот месяц</span>
+<b class="num" style="font-size: 28px">Ставка {{tmRate}}</b>
+<p class="body">{{tmText}}</p>
+<span class="chip chip-grey" style="align-self: flex-start">Опережение в неделях — после расчёта на истории</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- L-10 Ещё возможности -->
+<section id="more" class="sec" style="background: #F4F7FC">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 40px">
+<div class="rv" style="text-align: center"><h2 class="h1">Ещё несколько полезных вещей</h2><p class="lead" style="margin-top: 12px">Небольшие функции, которые экономят часы</p></div>
+<div class="grid3">
+<div class="feat rv" style="background: #E7EEFF"><div class="card" style="padding: 16px; display: flex; gap: 12px; align-items: center"><span class="mini-pulse" style="width: 44px; height: 44px; border-radius: 12px; background: #1F5EFF; color: #fff; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; flex: none">18</span><div><b class="small">Заседание ЦБ</b><div class="cap">Напомним за 7 и за 1 день</div></div></div><b style="font-size: 20px; margin-top: auto">Календарь</b><span class="muted small">ЦБ, налоги, индексации, праздники в Китае — с эффектом в рублях</span></div>
+<div class="feat rv" style="background: #E6F6EE"><div class="card" style="padding: 16px; display: flex; flex-direction: column; gap: 6px"><span class="chip chip-gain" style="align-self: flex-start">подходит</span><b class="small">Льготный кредит для МСП</b><span class="cap">пример · чек-лист из 6 документов</span></div><b style="font-size: 20px; margin-top: auto">Господдержка</b><span class="muted small">Программы под ваш ОКВЭД, регион и срок работы</span></div>
+<div class="feat rv" style="background: #F2ECFF"><div class="card" style="padding: 16px; display: flex; justify-content: space-between; align-items: center"><div><b class="small">Тихие часы</b><div class="cap">21:00–09:00</div></div><div class="mini-tog"><i></i></div></div><b style="font-size: 20px; margin-top: auto">Уведомления в Telegram</b><span class="muted small">Не больше 3 сигналов в неделю, без спама</span></div>
+<div class="feat rv" style="background: #FFF1E3"><div class="card" style="padding: 16px"><div class="cap">Понедельник, 10:00</div><b class="small">2 пункта из 40 новостей касаются вас</b></div><b style="font-size: 20px; margin-top: auto">Дайджест</b><span class="muted small">Что изменилось за неделю — только про ваш бизнес</span></div>
+<div class="feat rv" style="background: #E7EEFF"><div class="card" style="padding: 16px"><div class="cap">Радар нашёл за ноябрь</div><b class="num" style="font-size: 26px">≈ 9 000 ₽/мес</b></div><b style="font-size: 20px; margin-top: auto">Отчёт «Что радар дал вам»</b><span class="muted small">Сколько сигналов, что применено, сколько сохранено</span></div>
+<div class="feat rv" style="background: #E6F6EE"><div class="card" style="padding: 16px"><div class="spread small"><span>Юань</span><b>±2,5%</b></div><div class="spread small" style="margin-top: 6px"><span>Ставка</span><b>±0,5 п.п.</b></div></div><b style="font-size: 20px; margin-top: auto">Личные пороги</b><span class="muted small">Сигнал приходит, только когда движение важно для вас</span></div>
+</div>
+</div>
+</section>
+
+<!-- L-11 Точность -->
+<section id="accuracy" class="sec" style="background: #0A1530; color: #fff">
+<div class="wrap" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px">
+<div class="rv" style="display: flex; flex-direction: column; gap: 16px">
+<span class="eyebrow" style="color: #9FC0FF">Насколько мы точны</span>
+<h2 class="h1" style="color: #fff">Мы не обещаем точность — мы её измеряем</h2>
+<p class="lead" style="color: rgba(255,255,255,.7)">Метрики покажем после пилота на 30 бизнесах Новосибирска. Пока — принципы, по которым они считаются.</p>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 16px">
+<div style="background: rgba(255,255,255,.06); border-radius: 18px; padding: 18px"><div class="skeleton" style="height: 32px; width: 70%; opacity: .25"></div><div style="font-size: 13px; margin-top: 10px; color: rgba(255,255,255,.75)">Ошибка прогноза по накладным</div></div>
+<div style="background: rgba(255,255,255,.06); border-radius: 18px; padding: 18px"><div class="skeleton" style="height: 32px; width: 60%; opacity: .25"></div><div style="font-size: 13px; margin-top: 10px; color: rgba(255,255,255,.75)">Попадание в вилку</div></div>
+<div style="background: rgba(255,255,255,.06); border-radius: 18px; padding: 18px"><div class="skeleton" style="height: 32px; width: 50%; opacity: .25"></div><div style="font-size: 13px; margin-top: 10px; color: rgba(255,255,255,.75)">Опережение на истории</div></div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div class="rv" style="border-top: 1px solid rgba(255,255,255,.14); padding-top: 20px"><b style="font-size: 20px">Только официальные источники</b><p style="color: rgba(255,255,255,.7); margin-top: 6px">Банк России, Мосбиржа, Росстат, ФНС. Ссылка на источник у каждого числа.</p></div>
+<div class="rv" style="border-top: 1px solid rgba(255,255,255,.14); padding-top: 20px"><b style="font-size: 20px">ИИ не придумывает цифр</b><p style="color: rgba(255,255,255,.7); margin-top: 6px">Считает формула; текст, где число не совпадает с расчётом, не отправляется.</p></div>
+<div class="rv" style="border-top: 1px solid rgba(255,255,255,.14); padding-top: 20px"><b style="font-size: 20px">Данные хранятся в России</b><p style="color: rgba(255,255,255,.7); margin-top: 6px">По 152-ФЗ. ИНН не нужен; удалить данные — одна кнопка.</p></div>
+<div class="rv" style="border-top: 1px solid rgba(255,255,255,.14); padding-top: 20px"><b style="font-size: 20px">Информация, а не совет</b><p style="color: rgba(255,255,255,.7); margin-top: 6px">Не является индивидуальной инвестиционной рекомендацией. Решаете вы.</p></div>
+</div>
+</div>
+</section>
+
+<!-- L-12 FAQ -->
+<section class="sec">
+<div class="wrap" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 64px">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<h2 class="h1">Вопросы и ответы</h2>
+<div class="card" style="border-style: dashed; padding: 24px; margin-top: 16px; box-shadow: inset 0 0 0 1px #C9D4E8"><b>Отзывы первых 30 бизнесов</b><p class="small muted" style="margin-top: 6px">Появятся после пилота в Новосибирске. Мы не публикуем придуманные отзывы.</p></div>
+</div>
+<div>
+<template data-dc="for" list="{{faqs}}" as="q">
+<div style="border-bottom: 1px solid #E3E9F4">
+<button class="faq-q" onClick="{{q.pick}}" aria-expanded="{{q.aria}}">{{q.q}}<svg class="{{q.chevCls}}" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="#0B1A33" stroke-width="2" stroke-linecap="round"></path></svg></button>
+<div class="{{q.cls}}"><div><p class="body muted" style="padding-bottom: 22px">{{q.a}}</p></div></div>
+</div>
+</template>
+</div>
+</div>
+</section>
+
+<!-- L-13 Тарифы -->
+<section id="pricing" class="sec" style="background: #F4F7FC">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 32px; align-items: center">
+<div class="rv" style="text-align: center"><span class="eyebrow">Тарифы</span><h2 class="h1" style="margin-top: 12px">Первые 14 дней — «Бизнес» бесплатно</h2></div>
+<div class="pills" style="background: #fff; box-shadow: inset 0 0 0 1px #E3E9F4">
+<button class="{{mCls}}" onClick="{{setMonth}}">Месяц</button>
+<button class="{{yCls}}" onClick="{{setYear}}">Год <span class="chip chip-gain" style="height: 22px; padding: 0 8px; margin-left: 4px">−17%</span></button>
+</div>
+<div class="grid3" style="width: 100%; align-items: stretch">
+<div class="price-card rv">
+<b style="font-size: 20px">Радар Free</b>
+<div><span class="num" style="font-size: 48px; font-weight: 700">0 ₽</span></div>
+<span class="muted small">Знакомство с радаром</span>
+<div class="small" style="display: flex; flex-direction: column; gap: 10px"><span>✓ Индекс давления раз в неделю</span><span>✓ 1 сигнал в неделю, без расчёта в ₽</span><span>✓ Дайджест по понедельникам</span></div>
+<a class="btn btn-secondary" href="signup.html" style="margin-top: auto">Начать бесплатно</a>
+</div>
+<div class="price-card best rv">
+<div class="spread"><b style="font-size: 20px">Бизнес</b><span class="chip" style="background: rgba(255,255,255,.18); color: #fff">Выбор большинства</span></div>
+<template data-dc="if" value="{{year}}"><div class="mask"><span><span class="num" style="font-size: 48px; font-weight: 700">7 900 ₽</span> <span style="opacity: .8">/ год · 658 ₽ в месяц</span></span></div></template>
+<template data-dc="if" value="{{month}}"><div class="mask"><span><span class="num" style="font-size: 48px; font-weight: 700">790 ₽</span> <span style="opacity: .8">/ месяц</span></span></div></template>
+<span class="small" style="opacity: .85">Микробизнес, 1 точка</span>
+<div class="small" style="display: flex; flex-direction: column; gap: 10px"><span>✓ Сигналы с эффектом в ₽ и «Почему?»</span><span>✓ «Что если» и сценарии ЦБ</span><span>✓ Личные пороги и календарь</span><span>✓ Чат — 30 вопросов в месяц</span><span>✓ Господдержка</span></div>
+<a class="btn btn-white" href="signup.html" style="margin-top: auto">Попробовать 14 дней</a>
+</div>
+<div class="price-card rv">
+<b style="font-size: 20px">Бизнес+</b>
+<template data-dc="if" value="{{year}}"><div class="mask"><span><span class="num" style="font-size: 48px; font-weight: 700">19 900 ₽</span> <span class="muted">/ год · 1 658 ₽ в месяц</span></span></div></template>
+<template data-dc="if" value="{{month}}"><div class="mask"><span><span class="num" style="font-size: 48px; font-weight: 700">1 990 ₽</span> <span class="muted">/ месяц</span></span></div></template>
+<span class="muted small">Малый бизнес и сети</span>
+<div class="small" style="display: flex; flex-direction: column; gap: 10px"><span>✓ Всё из «Бизнес»</span><span>✓ Выписка, 1С, МойСклад</span><span>✓ До 5 точек или юрлиц</span><span>✓ Чат без ограничений</span><span>✓ Отчёт для собственника</span></div>
+<a class="btn btn-secondary" href="signup.html" style="margin-top: auto">Выбрать</a>
+</div>
+</div>
+<div class="card spread" style="width: 100%; padding: 24px 32px"><div><b style="font-size: 18px">Для банков, центров «Мой бизнес» и бухфирм</b><p class="small muted" style="margin-top: 4px">Радар под вашим брендом для ваших клиентов · от 30 000 ₽ в месяц или 150 ₽ за активного клиента</p></div><a class="btn btn-dark" href="#cta">Обсудить партнёрство</a></div>
+</div>
+</section>
+
+<!-- L-14 Финальный призыв -->
+<section id="cta" class="sec">
+<div class="wrap">
+<div class="cta">
+<div class="cta-lines"></div>
+<svg class="puff" width="300" height="340" viewBox="0 0 300 340" aria-hidden="true"><defs><filter id="puffF" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur in="SourceAlpha" stdDeviation="12" result="b"></feGaussianBlur><feSpecularLighting in="b" surfaceScale="9" specularConstant="1" specularExponent="24" lighting-color="#ffffff" result="s"><fePointLight x="-120" y="-200" z="300"></fePointLight></feSpecularLighting><feComposite in="s" in2="SourceAlpha" operator="in" result="sp"></feComposite><feComposite in="SourceGraphic" in2="sp" operator="arithmetic" k1="0" k2="1" k3="0.85" k4="0"></feComposite></filter><linearGradient id="puffG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5B8CFF"></stop><stop offset="1" stop-color="#0F3BC0"></stop></linearGradient></defs><text x="150" y="300" text-anchor="middle" font-family="Onest, system-ui, sans-serif" font-weight="800" font-size="360" fill="url(#puffG)" filter="url(#puffF)">Р</text></svg>
+<div style="position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 440px; gap: 48px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<h2 class="display" style="color: #fff; font-size: 56px; line-height: 60px">Узнайте, сколько курс и ставка стоят вашему бизнесу</h2>
+<p class="lead" style="color: rgba(255,255,255,.85)">За 2 минуты. Без ИНН. Первые 14 дней — все возможности бесплатно.</p>
+</div>
+<form class="formcard" onSubmit="{{submit}}">
+<label class="field"><span class="label">Расскажите о бизнесе одной фразой</span><textarea class="textarea" placeholder="{{phPlaceholder}}" onFocus="{{phFocus}}" style="min-height: 112px"></textarea></label>
+<label class="field"><span class="label">Телефон</span><input class="input" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel"></label>
+<button class="btn btn-primary btn-lg" type="submit">{{submitLabel}}</button>
+<span class="cap">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</span>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<!-- L-15 Подвал -->
+<footer style="background: #0A1530; color: rgba(255,255,255,.7); padding: 64px 0 40px">
+<div class="wrap" style="display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 12px"><b style="color: #fff; font-size: 18px">Антикризисный радар</b><span class="small">Стартап-студия НГУ, Новосибирск</span></div>
+<div class="small" style="display: flex; flex-direction: column; gap: 8px"><b style="color: #fff">Продукт</b><a href="#how" style="color: inherit">Как это работает</a><a href="#pricing" style="color: inherit">Тарифы</a><a href="#timemachine" style="color: inherit">Машина времени</a></div>
+<div class="small" style="display: flex; flex-direction: column; gap: 8px"><b style="color: #fff">Методика</b><a href="#why" style="color: inherit">Как мы считаем</a><a href="#accuracy" style="color: inherit">Точность</a><a href="#top" style="color: inherit">Источники данных</a></div>
+<div class="small" style="display: flex; flex-direction: column; gap: 8px"><b style="color: #fff">Документы</b><a href="#top" style="color: inherit">Оферта</a><a href="#top" style="color: inherit">Политика обработки данных</a></div>
+</div>
+<div class="wrap cap" style="margin-top: 40px; color: rgba(255,255,255,.5)">Не является индивидуальной инвестиционной рекомендацией. Тексты готовит ИИ на основе расчёта. Демо-данные на странице — пример кофейни.</div>
+</footer>
+</div>
+</template>
+<script src="dc-lite.js"></script>
+<script src="page-index.js"></script>
+</body>
+</html>

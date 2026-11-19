@@ -1,0 +1,5 @@
+/* Экран: Вход — Антикризисный радар (A01-Login) */
+body{margin:0;font-family:Onest,system-ui,sans-serif;color:#0B1A33}
+a{color:#1F5EFF}a:hover{color:#1747D6}
+.otp{width:64px;height:72px;border-radius:16px;border:1px solid #E3E9F4;text-align:center;font:600 30px Onest,sans-serif;color:#0B1A33}
+.otp.err{border-color:#D92D33;animation:buzz .3s linear}

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Оплата тарифа и успех</title>
+<meta name="description" content="Антикризисный радар: сколько курс, ставка и цены стоят вашему бизнесу — в рублях прибыли.">
+<meta name="theme-color" content="#1F5EFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="radar.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="page-checkout.css">
+</head>
+<body class="page-checkout view-desktop">
+<div id="dc-app"></div>
+<noscript><p style="font-family:sans-serif;padding:24px">Для работы сайта включите JavaScript.</p></noscript>
+<template id="dc-root">
+<div style="min-height: 900px; background: #F4F7FC; display: flex; flex-direction: column">
+<header style="height: 72px; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; background: #fff; box-shadow: 0 1px 0 #E3E9F4"><a class="btn btn-ghost btn-sm" href="tariffs.html">← Тарифы</a><b>Оплата</b><span class="cap">Защищённое соединение</span></header>
+<template data-dc="if" value="{{notDone}}">
+<div style="flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 24px; max-width: 1100px; width: 100%; margin: 0 auto; padding: 48px 24px; align-items: start">
+<div class="card" style="display: flex; flex-direction: column; gap: 18px; padding: 28px">
+<h1 class="h3">Способ оплаты</h1>
+<div style="display: flex; gap: 12px"><button class="{{cardCls}}" onClick="{{pickCard}}">Банковская карта</button><button class="{{sbpCls}}" onClick="{{pickSbp}}">СБП</button></div>
+<template data-dc="if" value="{{isCard}}"><div class="ph"><b>Платёжный виджет встраивается здесь</b><span class="small muted">Форма карты и 3-D Secure — на стороне платёжного сервиса. Данные карты мы не храним.</span></div></template>
+<template data-dc="if" value="{{isSbp}}"><div class="ph"><div style="width: 120px; height: 120px; border-radius: 12px; background: repeating-conic-gradient(#0B1A33 0 25%, #fff 0 50%) 0 0 / 20px 20px" aria-label="Место для QR-кода СБП" role="img"></div><span class="small muted">На телефоне — кнопка перехода в приложение банка</span></div></template>
+<label class="field"><span class="label">Почта для чека</span><input class="input" type="email" value="anna@example.ru" autocomplete="email"></label>
+<label class="field"><span class="label">Промокод</span><input class="input" placeholder="Если есть"></label>
+<label class="check"><input type="checkbox" checked><span>Продлевать автоматически каждый месяц. Отключить можно в настройках</span></label>
+<template data-dc="if" value="{{failed}}"><div style="border-radius: 14px; background: #FDECEC; color: #D92D33; padding: 12px 14px" class="small">Банк отклонил платёж: недостаточно средств. Попробуйте другую карту или СБП.</div></template>
+</div>
+<div class="card-sh" style="display: flex; flex-direction: column; gap: 6px; padding: 28px; position: sticky; top: 24px">
+<b style="font-size: 18px">Ваш заказ</b>
+<div class="line"><span class="muted">Тариф</span><b>Бизнес</b></div>
+<div class="line"><span class="muted">Период</span><b>1 месяц</b></div>
+<div class="line"><span class="muted">Следующее списание</span><b>19.12.2026</b></div>
+<div class="divider" style="margin: 6px 0"></div>
+<div class="line" style="font-size: 20px"><b>Итого</b><b class="num">790 ₽</b></div>
+<span class="cap">НДС не облагается</span>
+<button class="btn btn-primary btn-lg" onClick="{{pay}}" style="margin-top: 12px">{{payLbl}}</button>
+<button class="btn btn-ghost btn-sm" onClick="{{fail}}">Показать состояние ошибки</button>
+<span class="cap" style="text-align: center">Возврат в течение 14 дней</span>
+</div>
+</div>
+</template>
+<template data-dc="if" value="{{done}}">
+<div style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 48px 24px">
+<div class="card-sh" style="max-width: 560px; width: 100%; padding: 40px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; border-radius: 28px">
+<div class="check"><svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#0E8A43" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+<h1 class="h2">Тариф «Бизнес» активен до 19.12.2026</h1>
+<div style="display: flex; flex-direction: column; gap: 8px; text-align: left; width: 100%" class="small"><span>✓ Сигналы с эффектом в рублях и «Почему?»</span><span>✓ «Что если» и сценарии ЦБ</span><span>✓ Личные пороги и календарь с напоминаниями</span><span>✓ Чат — 30 вопросов в месяц · господдержка</span></div>
+<div style="border-radius: 14px; background: #EEF3FF; padding: 14px 16px; width: 100%; text-align: left" class="small"><b>Совет:</b> настройте личные пороги — 2 минуты, и сигналы будут приходить только когда важно</div>
+<div class="row"><a class="btn btn-secondary" href="#receipt">Чек на почте</a><a class="btn btn-primary" href="app.html">В кабинет</a></div>
+</div>
+</div>
+</template>
+</div>
+</template>
+<script src="dc-lite.js"></script>
+<script src="page-checkout.js"></script>
+</body>
+</html>

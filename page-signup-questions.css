@@ -1,0 +1,7 @@
+/* Экран: Онбординг, шаг 3 — Уточнения (A05-Questions) */
+body{margin:0;font-family:Onest,system-ui,sans-serif;color:#0B1A33}
+a{color:#1F5EFF}a:hover{color:#1747D6}
+.seg{flex:1;height:4px;border-radius:2px;background:#DCE6FF}.seg.on{background:#1F5EFF}
+.opt{height:64px;border-radius:16px;border:1px solid #E3E9F4;background:#fff;font:600 17px Onest,sans-serif;color:#0B1A33;cursor:pointer;transition:border-color .15s,background .15s,transform .15s}
+.opt:hover{border-color:#1F5EFF;background:#EEF3FF;transform:translateY(-1px)}
+.ring{transition:stroke-dashoffset .8s cubic-bezier(.22,1,.36,1)}

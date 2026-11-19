@@ -1,0 +1,20 @@
+/* Компонент «Sidebar» — Боковое меню кабинета */
+DC.component("Sidebar", "<nav aria-label=\"Разделы кабинета\" style=\"width: 248px; flex: none; height: 100vh; min-height: 640px; position: sticky; top: 0; align-self: flex-start; overflow-y: auto; background: #fff; border-right: 1px solid #E3E9F4; padding: 20px 16px; display: flex; flex-direction: column; gap: 4px; box-sizing: border-box; font-family: Onest, sans-serif\">\n<a href=\"index.html\" style=\"display: flex; align-items: center; gap: 10px; text-decoration: none; color: #0B1A33; padding: 0 8px 20px\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 36 36\" aria-hidden=\"true\"><rect width=\"36\" height=\"36\" rx=\"11\" fill=\"#1F5EFF\"></rect><path d=\"M13 27V9h6.5a5.5 5.5 0 0 1 0 11H13\" fill=\"none\" stroke=\"#fff\" stroke-width=\"3.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><b style=\"font-size: 15px; line-height: 18px\">Антикризисный<br>радар</b></a>\n<template data-dc=\"for\" list=\"{{items}}\" as=\"it\">\n<a class=\"{{it.cls}}\" href=\"{{it.href}}\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"{{it.d}}\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>{{it.t}}<template data-dc=\"if\" value=\"{{it.hasCnt}}\"><span class=\"cnt\">{{it.cnt}}</span></template></a>\n</template>\n<div style=\"flex: 1\"></div>\n<a class=\"{{profCls}}\" href=\"app-profile.html\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 20V9l8-5 8 5v11H4zM9 20v-6h6v6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linejoin=\"round\"></path></svg>Мой бизнес</a>\n<a class=\"{{setCls}}\" href=\"app-notifications.html\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"3\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\"></circle><path d=\"M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"></path></svg>Настройки</a>\n<div style=\"margin-top: 12px; border-radius: 16px; background: #EEF3FF; padding: 14px; display: flex; flex-direction: column; gap: 8px\">\n<span style=\"font-size: 12px; font-weight: 600; color: #1747D6\">Тариф «Бизнес» · пробный</span>\n<span style=\"font-size: 13px; color: #4A5A75\">Сегодня последний день</span>\n<div style=\"height: 6px; border-radius: 3px; background: #DCE6FF\"><div style=\"width: 100%; height: 100%; border-radius: 3px; background: #1F5EFF\"></div></div>\n<a class=\"btn btn-primary btn-sm\" href=\"tariffs.html\">Продлить за 790 ₽</a>\n</div>\n</nav>", function (DCLogic) {
+var NAV=[
+ {k:'snapshot',t:'Снимок',href:'app.html',d:'M4 13a8 8 0 1 1 16 0M12 13l4-4M3 17h18'},
+ {k:'signals',t:'Сигналы',href:'app-signals.html',d:'M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0',cnt:2},
+ {k:'market',t:'Рынок',href:'app-market.html',d:'M3 20h18M5 16l4-5 4 3 6-8M15 6h4v4'},
+ {k:'forecast',t:'Прогноз',href:'app-forecast.html',d:'M3 17c4 0 5-8 9-8s5 5 9 5M3 20h18M3 4v16'},
+ {k:'whatif',t:'Что если',href:'app-what-if.html',d:'M4 7h10M18 7h2M4 17h4M12 17h8M16 4v6M10 14v6'},
+ {k:'calendar',t:'Календарь',href:'app-calendar.html',d:'M4 6h16v14H4zM4 10h16M9 3v5M15 3v5'},
+ {k:'ask',t:'Спросить радар',href:'app-ask.html',d:'M4 5h16v11H9l-5 4z'},
+ {k:'support',t:'Господдержка',href:'app-support.html',d:'M12 3l8 4v5c0 5-4 8-8 9-4-1-8-4-8-9V7z'},
+ {k:'report',t:'Отчёт',href:'app-report.html',d:'M6 3h9l4 4v14H6zM9 13h6M9 17h6M9 9h3'},
+ {k:'time',t:'Машина времени',href:'app-time-machine.html',d:'M12 7v5l3 2M3 12a9 9 0 1 0 3-6.7M3 4v4h4'}];
+class Component extends DCLogic {
+ renderVals(){ var a=this.props.active || 'snapshot';
+  return { items: NAV.map(function(n){ return {t:n.t, href:n.href, d:n.d, cls:'nav-a'+(n.k===a?' on':''), hasCnt:!!n.cnt, cnt:n.cnt}; }), profCls: 'nav-a'+(a==='profile'?' on':''), setCls: 'nav-a'+(a==='settings'?' on':'') };
+ }
+}
+return Component;
+}, {});

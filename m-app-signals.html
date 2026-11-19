@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Сигналы — телефон, свайп</title>
+<meta name="description" content="Антикризисный радар: сколько курс, ставка и цены стоят вашему бизнесу — в рублях прибыли.">
+<meta name="theme-color" content="#1F5EFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>(function(){var q=location.search;if(q.indexOf('view=mobile')<0&&window.innerWidth>=1024)location.replace('app-signals.html'+q+location.hash);})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="radar.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="page-m-app-signals.css">
+</head>
+<body class="page-m-app-signals view-mobile">
+<div id="dc-app"></div>
+<noscript><p style="font-family:sans-serif;padding:24px">Для работы сайта включите JavaScript.</p></noscript>
+<template id="dc-root">
+<div style="width: 390px; height: 844px; background: #F4F7FC; position: relative; overflow: hidden">
+<div style="padding: 54px 16px 120px; display: flex; flex-direction: column; gap: 12px">
+<div class="spread"><b style="font-size: 26px">Сигналы</b><span class="chip chip-gain num">≈ {{found}} ₽/мес</span></div>
+<div class="pills" style="display: flex; overflow-x: auto"><button class="pill on">Новые</button><button class="pill">Риски</button><button class="pill">Применено</button></div>
+<span class="cap">Свайп вправо — применить, влево — отложить</span>
+<template data-dc="for" list="{{items}}" as="s">
+<div class="wrapc">
+<div class="under" style="background: {{s.under}}"><span style="color: #fff">✓ Применить</span><span style="color: #fff">Отложить на неделю</span></div>
+<div class="cardm" style="transform: translateX({{s.dx}}px); transition: {{s.tr}}" onPointerDown="{{s.down}}" onPointerMove="{{s.move}}" onPointerUp="{{s.up}}" onPointerCancel="{{s.up}}">
+<div class="spread"><span class="cap">{{s.ev}}</span><span class="{{s.urgCls}}">{{s.urg}}</span></div>
+<div class="{{s.effCls}}" style="font-size: 26px; font-weight: 700">{{s.eff}}</div>
+<b class="small">{{s.act}}</b>
+<div class="row"><a class="btn btn-secondary btn-sm" href="m-app-signal.html" style="flex: 1">Почему?</a><button class="btn btn-primary btn-sm" onClick="{{s.apply}}" style="flex: 1">Применить</button></div>
+</div>
+</div>
+</template>
+<template data-dc="if" value="{{empty}}"><div class="card" style="text-align: center"><b>Новых сигналов нет</b><p class="small muted">Следующее событие — ЦБ 18 декабря</p></div></template>
+</div>
+<template data-dc="if" value="{{toast}}"><div class="toastm" role="status"><span>{{toastText}}</span><button class="btn btn-sm" onClick="{{undo}}" style="background: rgba(255,255,255,.14); color: #fff; height: 30px">Отменить</button></div></template>
+<div style="position: absolute; left: 0; right: 0; bottom: 0"><template data-dc="import" name="TabBar" active="signals"></template></div>
+</div>
+</template>
+<script src="dc-lite.js"></script>
+<script src="comp-tabbar.js"></script>
+<script src="page-m-app-signals.js"></script>
+</body>
+</html>

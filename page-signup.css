@@ -1,0 +1,9 @@
+/* Экран: Онбординг, шаг 1 — Расскажите о бизнесе (A03-Phrase) */
+body{margin:0;font-family:Onest,system-ui,sans-serif;color:#0B1A33}
+a{color:#1F5EFF}a:hover{color:#1747D6}
+.seg{flex:1;height:4px;border-radius:2px;background:#DCE6FF}.seg.on{background:#1F5EFF}
+.hl{background:linear-gradient(transparent 55%,#DCE6FF 55%);animation:fadein .3s both}
+.ex{border:0;cursor:pointer;font-family:inherit}
+.sphere{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.sph{height:72px;border-radius:14px;border:1px solid #E3E9F4;background:#fff;font:500 13px Onest,sans-serif;color:#0B1A33;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.sph:hover{border-color:#1F5EFF;background:#EEF3FF}

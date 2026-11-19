@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Кабинет — господдержка</title>
+<meta name="description" content="Антикризисный радар: сколько курс, ставка и цены стоят вашему бизнесу — в рублях прибыли.">
+<meta name="theme-color" content="#1F5EFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="radar.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="page-app-support.css">
+</head>
+<body class="page-app-support view-desktop">
+<div id="dc-app"></div>
+<noscript><p style="font-family:sans-serif;padding:24px">Для работы сайта включите JavaScript.</p></noscript>
+<template id="dc-root">
+<div class="app">
+<template data-dc="import" name="Sidebar" active="support"></template>
+<main class="app-main">
+<div class="topbar"><div><h1 class="h3" style="font-size: 28px; line-height: 34px">Господдержка</h1><p class="small muted">Подобрали по ОКВЭД 56.10, региону, выручке и численности из вашего профиля. Обновляем раз в неделю</p></div><div class="row"><span class="chip chip-gain">3 подходят</span><span class="chip chip-grey">2 частично</span></div></div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px">
+<div class="card"><span class="cap">Можно получить</span><div class="num" style="font-size: 26px; font-weight: 700">до 2,8 млн ₽</div><span class="cap">льготный кредит + субсидия</span></div>
+<div class="card"><span class="cap">Экономия на процентах</span><div class="num gain" style="font-size: 26px; font-weight: 700">≈ 14 600 ₽/мес</div><span class="cap">если рефинансировать 2,5 млн</span></div>
+<div class="card"><span class="cap">Ближайший дедлайн</span><div class="num" style="font-size: 26px; font-weight: 700">5 декабря</div><span class="cap">приём заявок, пример 2</span></div>
+<div class="card"><span class="cap">Документы готовы</span><div class="num" style="font-size: 26px; font-weight: 700">{{docDone}} из {{docAll}}</div><div class="track" style="margin-top: 6px"><div class="fill" style="width: {{docPct}}"></div></div></div>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 20px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<template data-dc="for" list="{{progs}}" as="p">
+<div class="{{p.cls}}" onClick="{{p.pick}}">
+<svg class="ring" viewBox="0 0 64 64" aria-label="{{p.aria}}"><circle cx="32" cy="32" r="26" fill="none" stroke="#EEF1F6" stroke-width="7"></circle><circle cx="32" cy="32" r="26" fill="none" stroke="{{p.rc}}" stroke-width="7" stroke-linecap="round" stroke-dasharray="{{p.dash}}" transform="rotate(-90 32 32)"></circle><text x="32" y="37" text-anchor="middle" style="font: 700 15px Onest, sans-serif; fill: #0B1A33">{{p.m}}</text></svg>
+<div><div class="row" style="gap: 8px"><b>{{p.name}}</b><span class="chip chip-grey" style="height: 20px; font-size: 11px">пример</span></div><div class="small muted" style="margin-top: 2px">{{p.desc}}</div><div class="row" style="gap: 6px; margin-top: 8px"><template data-dc="for" list="{{p.tags}}" as="t"><span class="{{t.c}}" style="height: 22px; font-size: 12px">{{t.t}}</span></template></div></div>
+<div><span class="cap">Сумма / выгода</span><div class="num" style="font-weight: 700">{{p.amt}}</div><span class="cap">{{p.ben}}</span></div>
+<div><span class="cap">Дедлайн</span><div style="font-weight: 600">{{p.dl}}</div><span class="{{p.dlCls}}">{{p.left}}</span></div>
+</div>
+</template>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; position: sticky; top: 24px">
+<div class="card">
+<span class="cap">Выбрано</span><b style="display: block; font-size: 18px; margin: 4px 0 8px">{{sel.name}}</b>
+<p class="small muted">Совпадение по {{sel.m}} критериям. {{sel.why}}</p>
+<div style="margin-top: 12px"><b class="small">Документы</b>
+<template data-dc="for" list="{{docs}}" as="d"><div class="ck"><button class="{{d.cls}}" onClick="{{d.tog}}" aria-label="Отметить документ"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3.5" fill="none" stroke="#fff" stroke-width="2"></path></svg></button><span>{{d.t}}</span><span class="cap">{{d.src}}</span></div></template>
+</div>
+<div class="row" style="margin-top: 12px"><button class="btn btn-primary">Подготовить пакет</button><button class="btn btn-secondary">Напомнить</button></div>
+</div>
+<div class="card">
+<b>Эффект на прибыль</b>
+<svg viewBox="0 0 320 130" width="100%" height="130" aria-label="Прибыль в месяц сейчас и после рефинансирования">
+<rect x="20" y="{{e1y}}" width="80" height="{{e1h}}" rx="8" fill="#93B4FF"></rect><rect x="130" y="{{e2y}}" width="80" height="{{e2h}}" rx="8" fill="#1F5EFF"></rect>
+<text x="60" y="{{e1t}}" text-anchor="middle" style="font: 700 12px Onest, sans-serif; fill: #0B1A33">129 000</text><text x="170" y="{{e2t}}" text-anchor="middle" style="font: 700 12px Onest, sans-serif; fill: #0B1A33">{{effV}}</text>
+<text class="ax" x="60" y="126" text-anchor="middle">сейчас</text><text class="ax" x="170" y="126" text-anchor="middle">с программой</text>
+<text x="230" y="60" style="font: 700 16px Onest, sans-serif; fill: #0E8A43">{{effD}}</text><text class="ax" x="230" y="78">в месяц</text>
+</svg>
+</div>
+<div class="card"><b>Как пройдёт заявка</b>
+<div class="tl"><span class="cap">сегодня</span><span>Проверка соответствия — готово</span></div>
+<div class="tl"><span class="cap">до 5.12</span><span>Подать заявку через банк-партнёр программы</span></div>
+<div class="tl"><span class="cap">10–20 дней</span><span>Решение; радар пришлёт сигнал</span></div>
+</div>
+</div>
+</div>
+<p class="cap">Названия программ, суммы и сроки — примеры для макета. На проде — реестры МСП.РФ и региональных фондов; радар не подаёт заявки за пользователя.</p>
+</main>
+</div>
+</template>
+<script src="dc-lite.js"></script>
+<script src="comp-sidebar.js"></script>
+<script src="page-app-support.js"></script>
+</body>
+</html>

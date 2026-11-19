@@ -1,0 +1,16 @@
+/* Экран: Кабинет — уведомления и пороги (C11-Notify) */
+body{margin:0;font-family:Onest,system-ui,sans-serif;color:#0B1A33}a{color:#1F5EFF}
+.ax{font:11px Onest,sans-serif;fill:#6B7A93}
+.th{display:grid;grid-template-columns:200px 1fr 150px;gap:16px;align-items:center;padding:14px 0;border-top:1px solid #E3E9F4}
+.steps{display:flex;gap:4px}
+.st{flex:1;height:34px;border-radius:10px;border:0;background:#F4F7FC;font:600 13px Onest,sans-serif;color:#0B1A33;cursor:pointer;transition:background .2s,color .2s}
+.st.on{background:#1F5EFF;color:#fff}
+.sw{width:44px;height:26px;border-radius:13px;background:#C9D3E3;position:relative;border:0;cursor:pointer;transition:background .2s;flex:none}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .2s var(--out)}
+.sw.on{background:#1F5EFF}
+.sw.on::after{transform:translateX(18px)}
+.chn{display:grid;grid-template-columns:40px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-top:1px solid #E3E9F4}
+.ico{width:40px;height:40px;border-radius:12px;background:#EEF3FF;display:grid;place-items:center}
+.hr{display:grid;grid-template-columns:repeat(24,1fr);gap:2px;margin-top:10px}
+.hr i{height:28px;border-radius:4px;background:#EEF3FF}
+.hr i.q{background:#0A1530}

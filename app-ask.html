@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Кабинет — спросить радар</title>
+<meta name="description" content="Антикризисный радар: сколько курс, ставка и цены стоят вашему бизнесу — в рублях прибыли.">
+<meta name="theme-color" content="#1F5EFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="radar.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="page-app-ask.css">
+</head>
+<body class="page-app-ask view-desktop">
+<div id="dc-app"></div>
+<noscript><p style="font-family:sans-serif;padding:24px">Для работы сайта включите JavaScript.</p></noscript>
+<template id="dc-root">
+<div class="app">
+<template data-dc="import" name="Sidebar" active="ask"></template>
+<main class="app-main" style="max-height: 960px">
+<div class="topbar"><div><h1 class="h3" style="font-size: 28px; line-height: 34px">Спросить радар</h1><p class="small muted">Отвечает только по вашим данным и официальным источникам; считает тем же калькулятором</p></div><span class="chip chip-line num">Осталось {{left}} из 30 вопросов</span></div>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 14px; max-width: 900px; overflow: auto; padding-right: 8px">
+<template data-dc="for" list="{{msgs}}" as="m">
+<template data-dc="if" value="{{m.isQ}}"><div class="q">{{m.t}}</div></template>
+<template data-dc="if" value="{{m.isA}}"><div class="a"><div class="a-txt">{{m.t}}</div>
+<div class="calc"><div><span class="cap">{{m.k1}}</span><b class="num" style="display: block; font-size: 20px">{{m.v1}}</b></div><div><span class="cap">{{m.k2}}</span><b class="num" style="display: block; font-size: 20px">{{m.v2}}</b></div><div><span class="cap">{{m.k3}}</span><b class="num" style="display: block; font-size: 20px">{{m.v3}}</b></div></div>
+<span class="cap">Источники: {{m.src}} · <a href="app-what-if.html">Открыть в «Что если»</a></span></div></template>
+</template>
+<template data-dc="if" value="{{typing}}"><div class="a-txt dots" style="align-self: flex-start" aria-label="Радар считает"><i></i><i></i><i></i></div></template>
+</div>
+<div style="max-width: 900px; display: flex; flex-direction: column; gap: 10px">
+<div class="row"><template data-dc="for" list="{{sugs}}" as="s"><button class="chip chip-line sug" onClick="{{s.pick}}">{{s.t}}</button></template></div>
+<form onSubmit="{{send}}" style="display: flex; gap: 10px; background: #fff; border-radius: 999px; padding: 6px 6px 6px 20px; box-shadow: inset 0 0 0 1px #E3E9F4"><label style="flex: 1; display: flex"><span style="position: absolute; left: -9999px">Ваш вопрос</span><input value="{{draft}}" onChange="{{onDraft}}" placeholder="Например: что будет, если поднять цену на 5%?" style="flex: 1; border: 0; outline: none; font: 400 16px Onest,sans-serif"></label><button class="btn btn-primary" type="submit">Спросить</button></form>
+<span class="cap">Текст готовит ИИ на основе расчёта. Если данных нет, радар честно скажет «не знаю».</span>
+</div>
+</main>
+</div>
+</template>
+<script src="dc-lite.js"></script>
+<script src="comp-sidebar.js"></script>
+<script src="page-app-ask.js"></script>
+</body>
+</html>

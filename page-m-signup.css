@@ -1,0 +1,4 @@
+/* Экран: Онбординг одной фразой — телефон (M-A03) */
+body{margin:0;font-family:Onest,system-ui,sans-serif;color:#0B1A33}a{color:#1F5EFF}a:hover{color:#1747D6}
+.seg{flex:1;height:4px;border-radius:2px;background:#DCE6FF}.seg.on{background:#1F5EFF}
+.key{height:42px;border-radius:6px;background:#fff;box-shadow:0 1px 0 #B9C2D0;font-size:16px;display:flex;align-items:center;justify-content:center}

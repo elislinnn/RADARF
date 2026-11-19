@@ -1,0 +1,4 @@
+/* Экран: Кабинет — что если (C04-WhatIf) */
+body{margin:0;font-family:Onest,system-ui,sans-serif;color:#0B1A33}a{color:#1F5EFF}a:hover{color:#1747D6}
+.rng{width:100%;accent-color:#1F5EFF;height:24px}
+.bar{height:12px;border-radius:6px;transition:width .24s var(--out)}

@@ -1,0 +1,12 @@
+/* Экран: Кабинет — господдержка (C07-Support) */
+body{margin:0;font-family:Onest,system-ui,sans-serif;color:#0B1A33}a{color:#1F5EFF}a:hover{color:#1747D6}
+.ax{font:11px Onest,sans-serif;fill:#6B7A93}
+.pr{background:#fff;border-radius:20px;box-shadow:inset 0 0 0 1px #E3E9F4;padding:18px 20px;display:grid;grid-template-columns:64px 1fr 220px 180px;gap:18px;align-items:center;cursor:pointer;transition:box-shadow .2s}
+.pr.on{box-shadow:inset 0 0 0 2px #1F5EFF,0 14px 28px rgba(31,94,255,.10)}
+.ring{width:64px;height:64px}
+.track{height:8px;border-radius:4px;background:#EEF1F6;overflow:hidden}
+.fill{height:100%;border-radius:4px;background:#1F5EFF;transition:width .5s var(--out)}
+.ck{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid #E3E9F4;font-size:14px}
+.box{width:20px;height:20px;border-radius:6px;box-shadow:inset 0 0 0 1.5px #B7C3D8;display:grid;place-items:center;cursor:pointer;background:#fff;border:0;padding:0}
+.box.on{background:#1F5EFF;box-shadow:none}
+.tl{display:grid;grid-template-columns:90px 1fr;gap:12px;padding:8px 0;font-size:14px}

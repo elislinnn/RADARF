@@ -1,0 +1,133 @@
+/* Антикризисный радар — токены и компоненты (дизайн-система, раздел 9 спецификации) */
+:root{
+  --blue-600:#1F5EFF;--blue-700:#1747D6;--blue-100:#DCE6FF;--blue-50:#EEF3FF;
+  --ink:#0B1A33;--ink-2:#4A5A75;--ink-3:#6B7A93;--line:#E3E9F4;--bg:#F4F7FC;--navy:#0A1530;
+  --loss:#D92D33;--gain:#0E8A43;--warn:#B76E00;--warn-bg:#FFF4DE;
+  --r-s:8px;--r-m:12px;--r-l:20px;--r-xl:28px;
+  --sh:0 1px 2px rgba(11,26,51,.06),0 8px 24px rgba(11,26,51,.06);
+  --sh-up:0 24px 48px rgba(11,26,51,.14);
+  --out:cubic-bezier(.22,1,.36,1);--io:cubic-bezier(.65,0,.35,1);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Onest,system-ui,sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums}
+h1,h2,h3,h4,p{margin:0}
+.display{font-size:64px;line-height:68px;font-weight:700;letter-spacing:-.02em}
+.h1{font-size:48px;line-height:52px;font-weight:700;letter-spacing:-.02em}
+.h2{font-size:36px;line-height:40px;font-weight:700;letter-spacing:-.02em}
+.h3{font-size:24px;line-height:30px;font-weight:600;letter-spacing:-.01em}
+.lead{font-size:18px;line-height:26px;color:var(--ink-2)}
+.body{font-size:16px;line-height:24px}
+.small{font-size:14px;line-height:20px}
+.cap{font-size:12px;line-height:16px;color:var(--ink-3)}
+.muted{color:var(--ink-2)}
+.loss{color:var(--loss)}.gain{color:var(--gain)}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue-600)}
+
+/* кнопки */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 20px;border-radius:999px;border:0;font:600 15px/1 Onest,sans-serif;cursor:pointer;text-decoration:none;transition:transform .15s var(--out),box-shadow .15s var(--out),background .15s}
+.btn-lg{height:52px;padding:0 26px;font-size:16px}
+.btn-sm{height:36px;padding:0 14px;font-size:14px}
+.btn-primary{background:var(--blue-600);color:#fff;box-shadow:0 6px 16px rgba(31,94,255,.28)}
+.btn-primary:hover{background:var(--blue-700);transform:translateY(-1px);box-shadow:0 10px 24px rgba(31,94,255,.34)}
+.btn-primary::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%)}
+.btn-primary:hover::after{transform:translateX(120%);transition:transform .6s var(--out)}
+.btn-primary:active,.btn-secondary:active{transform:scale(.97)}
+.btn-secondary{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.btn-secondary:hover{box-shadow:inset 0 0 0 1px #C9D4E8;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--blue-600)}
+.btn-white{background:#fff;color:var(--blue-700)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn:focus-visible,.pill:focus-visible,input:focus-visible,textarea:focus-visible{outline:none;box-shadow:0 0 0 3px var(--blue-100),0 0 0 4px var(--blue-600)}
+
+/* чипы, пилюли */
+.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 12px;border-radius:999px;font-size:13px;font-weight:500;background:var(--blue-50);color:var(--blue-700);white-space:nowrap}
+.chip-grey{background:#EEF1F6;color:var(--ink-2)}
+.chip-warn{background:var(--warn-bg);color:var(--warn)}
+.chip-gain{background:#E3F5EA;color:var(--gain)}
+.chip-loss{background:#FDECEC;color:var(--loss)}
+.chip-line{background:#fff;color:var(--ink-2);box-shadow:inset 0 0 0 1px var(--line)}
+.pills{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:var(--bg)}
+.pill{height:36px;padding:0 16px;border-radius:999px;border:0;background:transparent;font:500 14px Onest,sans-serif;color:var(--ink-2);cursor:pointer;transition:background .3s var(--out),color .3s}
+.pill.on{background:var(--blue-600);color:#fff}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--blue-600);display:inline-block}
+
+/* карточки */
+.card{background:#fff;border-radius:var(--r-l);box-shadow:inset 0 0 0 1px var(--line);padding:24px}
+.card-sh{background:#fff;border-radius:var(--r-l);box-shadow:var(--sh);padding:24px}
+.card-blue{background:var(--blue-600);color:#fff;border-radius:var(--r-l);padding:24px}
+.card-blue .muted,.card-blue .cap{color:rgba(255,255,255,.78)}
+.card-navy{background:var(--navy);color:#fff;border-radius:var(--r-xl);padding:32px}
+.divider{height:1px;background:var(--line)}
+
+/* поля */
+.field{display:flex;flex-direction:column;gap:6px}
+.label{font-size:14px;font-weight:500}
+.input{height:52px;border-radius:var(--r-m);border:1px solid var(--line);padding:0 16px;font:400 16px Onest,sans-serif;color:var(--ink);background:#fff;width:100%}
+.textarea{min-height:132px;border-radius:var(--r-m);border:1px solid var(--line);padding:16px;font:400 17px/26px Onest,sans-serif;color:var(--ink);resize:none;width:100%}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:20px;color:var(--ink-2)}
+.check input{width:20px;height:20px;accent-color:var(--blue-600);margin:0;flex:none}
+
+/* кабинет: каркас */
+.app{display:flex;flex-wrap:wrap;min-height:900px;background:var(--bg)}
+.app-main{flex:999 1 640px;min-width:0;padding:24px 32px 48px;display:flex;flex-direction:column;gap:24px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.ticker{display:flex;gap:8px;flex-wrap:wrap}
+.icon-btn{width:44px;height:44px;border-radius:50%;border:0;background:#fff;box-shadow:inset 0 0 0 1px var(--line);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink);position:relative}
+.badge{position:absolute;top:8px;right:9px;width:8px;height:8px;border-radius:50%;background:var(--loss);box-shadow:0 0 0 2px #fff}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--blue-100);color:var(--blue-700);display:inline-flex;align-items:center;justify-content:center;font-weight:600}
+
+/* сайдбар */
+.side{flex:1 1 248px;max-width:248px;background:#fff;border-right:1px solid var(--line);padding:20px 16px;display:flex;flex-direction:column;gap:4px}
+.nav-a{display:flex;align-items:center;gap:12px;height:44px;padding:0 12px;border-radius:12px;color:var(--ink-2);text-decoration:none;font-size:15px;font-weight:500}
+.nav-a:hover{background:var(--bg);color:var(--ink)}
+.nav-a.on{background:var(--blue-50);color:var(--blue-700)}
+.nav-a .cnt{margin-left:auto;min-width:22px;height:22px;border-radius:11px;background:var(--blue-600);color:#fff;font-size:12px;display:inline-flex;align-items:center;justify-content:center;padding:0 6px}
+.nav-a .lock{margin-left:auto;color:var(--ink-3)}
+
+/* сигналы */
+.sig{background:#fff;border-radius:var(--r-l);box-shadow:inset 0 0 0 1px var(--line);padding:20px 24px;display:flex;flex-direction:column;gap:12px;position:relative}
+.sig.applied{box-shadow:inset 0 0 0 1px var(--line),inset 4px 0 0 var(--gain)}
+.sig .ev{font-size:14px;color:var(--ink-2);display:flex;gap:10px;align-items:center}
+.sig .eff{font-size:28px;line-height:32px;font-weight:700;letter-spacing:-.01em}
+.sig .act{font-size:16px;line-height:24px;font-weight:600}
+.ch-ic{width:36px;height:36px;border-radius:10px;background:var(--blue-50);color:var(--blue-600);display:inline-flex;align-items:center;justify-content:center;flex:none}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.spread{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+
+/* датчик давления */
+.gauge-track{stroke:rgba(255,255,255,.22)}
+.gauge-val{stroke:#fff;stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:283;animation:gauge 1.2s var(--out) .2s forwards}
+@keyframes gauge{to{stroke-dashoffset:var(--to)}}
+
+/* анимации — общий набор */
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes line-up{from{transform:translateY(105%)}to{transform:none}}
+@keyframes pop{0%{opacity:0;transform:translateY(12px) scale(.8)}60%{opacity:1;transform:translateY(-2px) scale(1.02)}100%{opacity:1;transform:none}}
+@keyframes drift1{from{transform:translate(0,0) scale(1)}to{transform:translate(80px,40px) scale(1.15)}}
+@keyframes drift2{from{transform:translate(0,0) scale(1)}to{transform:translate(-90px,30px) scale(1.1)}}
+@keyframes sweep{to{transform:rotate(360deg)}}
+@keyframes blink{0%,100%{opacity:.25}50%{opacity:1}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes buzz{0%,100%{transform:none}20%{transform:translateX(-2px)}40%{transform:translateX(2px)}60%{transform:translateX(-2px)}80%{transform:translateX(2px)}}
+@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes spin-angle{to{--ang:360deg}}
+@keyframes shimmer{0%{background-position:-400px 0}100%{background-position:400px 0}}
+@keyframes ping{0%{transform:scale(1);opacity:.6}100%{transform:scale(2.6);opacity:0}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
+.a-rise{animation:rise .7s var(--out) both}
+.a-pop{animation:pop .5s var(--out) both}
+.a-fade{animation:fadein .4s var(--out) both}
+.mask{display:block;overflow:hidden;padding-bottom:4px}
+.mask>span{display:block;animation:line-up .7s var(--out) both}
+.ping{position:relative}
+.ping::before{content:"";position:absolute;inset:0;border-radius:50%;background:inherit;animation:ping 1.6s var(--out) infinite}
+@supports (animation-timeline: view()){
+  .rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% cover 28%}
+  .rv-grow{animation:grow linear both;animation-timeline:view();animation-range:entry 10% cover 40%;transform-origin:bottom}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+.skeleton{background:linear-gradient(90deg,#EEF1F6 0,#F7F9FC 50%,#EEF1F6 100%);background-size:800px 100%;animation:shimmer 1.4s linear infinite;border-radius:8px}

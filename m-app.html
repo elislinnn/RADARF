@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Снимок бизнеса — телефон</title>
+<meta name="description" content="Антикризисный радар: сколько курс, ставка и цены стоят вашему бизнесу — в рублях прибыли.">
+<meta name="theme-color" content="#1F5EFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>(function(){var q=location.search;if(q.indexOf('view=mobile')<0&&window.innerWidth>=1024)location.replace('app.html'+q+location.hash);})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="radar.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="page-m-app.css">
+</head>
+<body class="page-m-app view-mobile">
+<div id="dc-app"></div>
+<noscript><p style="font-family:sans-serif;padding:24px">Для работы сайта включите JavaScript.</p></noscript>
+<template id="dc-root">
+<div style="width: 390px; height: 844px; background: #F4F7FC; position: relative; overflow: hidden">
+<div style="padding: 54px 16px 120px; display: flex; flex-direction: column; gap: 14px">
+<div class="spread"><div><b style="font-size: 22px">Доброе утро, Анна</b><div class="cap">Кофейня · 19 ноября</div></div><span class="avatar">А</span></div>
+<div class="row" style="gap: 6px"><span class="chip chip-line num">CNY 12,38 · +2,8%</span><span class="chip chip-line num">Ставка 14%</span></div>
+<div class="card-blue" style="border-radius: 22px; display: flex; align-items: center; gap: 16px; padding: 18px">
+<svg viewBox="0 0 200 112" width="140" height="80" role="img" aria-label="Индекс давления 64 из 100"><path d="M12 102a88 88 0 0 1 176 0" fill="none" class="gauge-track" stroke-width="18" stroke-linecap="round"></path><path d="M12 102a88 88 0 0 1 176 0" fill="none" class="gauge-val" stroke-width="18" style="--to: 100; stroke-dasharray: 277; stroke-dashoffset: 277"></path><text x="100" y="96" text-anchor="middle" fill="#fff" font-size="52" font-weight="700" font-family="Onest, system-ui, sans-serif">64</text></svg>
+<div><span class="cap">Индекс давления</span><div style="font-size: 14px; line-height: 20px">+3 за неделю. Главное — валюта</div></div>
+</div>
+<div class="card" style="padding: 16px; display: flex; justify-content: space-between; align-items: center"><div><span class="cap">Радар нашёл для вас</span><div class="num" style="font-size: 26px; font-weight: 700; color: #0E8A43">≈ 9 000 ₽/мес</div></div><span class="chip chip-grey">3 применено</span></div>
+<b style="margin-top: 4px">Главные риски</b>
+<a class="rk" href="m-app-signal.html"><div><div class="cap">Юань +2,8% · ✓ применено</div><b class="small">Закупка зерна на 2 месяца</b></div><b class="num loss">−6 900 ₽</b></a>
+<a class="rk" href="m-app-signal.html"><div><div class="cap">Аренда с 1 января · срок 15.12</div><b class="small">Обсудить индексацию</b></div><b class="num loss">−11 000 ₽</b></a>
+<a class="rk" href="m-app-signal.html"><div><div class="cap">ЦБ 18 декабря</div><b class="small">Не фиксировать ставку</b></div><b class="num gain">+2 100 ₽</b></a>
+<div class="card" style="padding: 16px"><b class="small">Ближайшее событие</b><div class="spread" style="margin-top: 8px"><span class="small">18.12 · Заседание ЦБ</span><span class="chip">напомним</span></div></div>
+</div>
+<div style="position: absolute; left: 0; right: 0; bottom: 0"><template data-dc="import" name="TabBar" active="snapshot"></template></div>
+</div>
+</template>
+<script src="dc-lite.js"></script>
+<script src="comp-tabbar.js"></script>
+<script src="page-m-app.js"></script>
+</body>
+</html>

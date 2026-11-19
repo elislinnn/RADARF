@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Кабинет — отчёт «Что радар дал вам»</title>
+<meta name="description" content="Антикризисный радар: сколько курс, ставка и цены стоят вашему бизнесу — в рублях прибыли.">
+<meta name="theme-color" content="#1F5EFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="radar.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="page-app-report.css">
+</head>
+<body class="page-app-report view-desktop">
+<div id="dc-app"></div>
+<noscript><p style="font-family:sans-serif;padding:24px">Для работы сайта включите JavaScript.</p></noscript>
+<template id="dc-root">
+<div class="app">
+<template data-dc="import" name="Sidebar" active="report"></template>
+<main class="app-main">
+<div class="topbar"><div><h1 class="h3" style="font-size: 28px; line-height: 34px">Что радар дал вам</h1><p class="small muted">Ноябрь 2026 · первые 14 дней</p></div><div class="row"><button class="btn btn-secondary btn-sm">Поделиться с бухгалтером</button><button class="btn btn-secondary btn-sm">Скачать PDF · Бизнес+</button></div></div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+<div class="card-blue"><span class="cap">Найдено решений</span><div class="num" style="font-size: 36px; font-weight: 700">≈ 9 000 ₽</div><span class="small">в месяц · оценка</span></div>
+<div class="card"><span class="cap">Сигналов</span><div class="num" style="font-size: 36px; font-weight: 700">7</div><span class="small muted">из 40+ новостей за период</span></div>
+<div class="card"><span class="cap">Применено</span><div class="num" style="font-size: 36px; font-weight: 700">3</div><span class="small muted">1 отложено · 1 не актуально</span></div>
+<div class="card"><span class="cap">Индекс давления</span><div class="num" style="font-size: 36px; font-weight: 700">61 → 64</div><span class="small muted">главное — валюта</span></div>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 20px">
+<div class="card"><b style="font-size: 18px">Хронология</b>
+<div class="tl"><span class="d">6 ноября</span><span class="p"></span><div><b>Профиль собран одной фразой</b><div class="small muted">Точность 58% → 72% после двух ответов</div></div><span></span></div>
+<div class="tl"><span class="d">10 ноября</span><span class="p g"></span><div><b>Молочная продукция +3,1% (демо)</b><div class="small muted">Сравнили прайс второго поставщика</div></div><b class="num gain">≈ 1 800 ₽</b></div>
+<div class="tl"><span class="d">12 ноября</span><span class="p g"></span><div><b>Юань +2,8% → закупка зерна на 2 месяца</b><div class="small muted">Договорились с поставщиком по старому прайсу</div></div><b class="num gain">≈ 6 900 ₽</b></div>
+<div class="tl"><span class="d">14 ноября</span><span class="p g"></span><div><b>Программа поддержки (пример)</b><div class="small muted">Собраны 6 документов</div></div><span class="chip chip-grey">в процессе</span></div>
+<div class="tl"><span class="d">18 ноября</span><span class="p n"></span><div><b>Индексация аренды с 1 января</b><div class="small muted">Ждёт решения до 15 декабря</div></div><b class="num loss">−11 000 ₽</b></div>
+</div>
+<div class="card" style="display: flex; flex-direction: column; gap: 12px"><b style="font-size: 18px">Индекс давления по неделям</b>
+<div style="display: flex; align-items: flex-end; gap: 10px; height: 180px"><div class="pb" style="height: 61%"></div><div class="pb" style="height: 59%; animation-delay: .08s"></div><div class="pb" style="height: 62%; animation-delay: .16s"></div><div class="pb" style="height: 64%; animation-delay: .24s"></div></div>
+<div class="spread cap"><span>2–8 ноя</span><span>9–15</span><span>16–22</span><span>сейчас</span></div>
+<p class="small muted">Оценка сохранённых денег — по применённым сигналам и их расчётному эффекту. Это не бухгалтерская прибыль.</p>
+</div>
+</div>
+</main>
+</div>
+</template>
+<script src="dc-lite.js"></script>
+<script src="comp-sidebar.js"></script>
+<script src="page-app-report.js"></script>
+</body>
+</html>

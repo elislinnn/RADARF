@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Снимок бизнеса — первый показ</title>
+<meta name="description" content="Антикризисный радар: сколько курс, ставка и цены стоят вашему бизнесу — в рублях прибыли.">
+<meta name="theme-color" content="#1F5EFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="radar.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="page-signup-snapshot.css">
+</head>
+<body class="page-signup-snapshot view-desktop">
+<div id="dc-app"></div>
+<noscript><p style="font-family:sans-serif;padding:24px">Для работы сайта включите JavaScript.</p></noscript>
+<template id="dc-root">
+<div style="min-height: 960px; background: #F4F7FC; padding: 32px 40px 48px; display: flex; flex-direction: column; gap: 24px">
+<div class="spread">
+<div style="display: flex; align-items: center; gap: 10px"><svg width="32" height="32" viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="11" fill="#1F5EFF"></rect><path d="M13 27V9h6.5a5.5 5.5 0 0 1 0 11H13" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg><b>Антикризисный радар</b></div>
+<button class="btn btn-ghost btn-sm" onClick="{{replay}}">↻ Повторить показ</button>
+</div>
+<template data-dc="if" value="{{show}}"><div style="display: flex; flex-direction: column; gap: 24px">
+<div class="a-rise" style="display: flex; flex-direction: column; gap: 8px"><span class="eyebrow">Снимок бизнеса · кофейня, Новосибирск</span><h1 class="h1">Анна, вот что внешняя среда делает с вашей прибылью</h1></div>
+<div style="display: grid; grid-template-columns: 380px minmax(0, 1fr); gap: 24px">
+<div class="card-blue a-rise" style="border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 10px; animation-delay: .15s">
+<span class="cap">Индекс давления на бизнес</span>
+<svg viewBox="0 0 200 112" width="100%" height="180" role="img" aria-label="Индекс давления 64 из 100"><path d="M12 102a88 88 0 0 1 176 0" fill="none" class="gauge-track" stroke-width="16" stroke-linecap="round"></path><path d="M12 102a88 88 0 0 1 176 0" fill="none" class="gauge-val" stroke-width="16" style="--to: 100; stroke-dasharray: 277; stroke-dashoffset: 277"></path><text x="100" y="94" text-anchor="middle" fill="#fff" font-size="48" font-weight="700" font-family="Onest, system-ui, sans-serif">64</text></svg>
+<div class="spread"><span>из 100 — выше среднего</span><span class="chip" style="background: rgba(255,255,255,.16); color: #fff">валюта 38%</span></div>
+<span class="small" style="opacity: .85">Главный канал давления — закупки в юанях. Дальше — аренда и ставка по кредиту.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<b class="a-rise" style="animation-delay: .5s">Три главных риска и возможности</b>
+<div class="risk" style="animation-delay: .7s"><span class="ic" style="background: #FDECEC; color: #D92D33; font-weight: 700">¥</span><div><b style="font-size: 17px">Юань +2,8% за 30 дней</b><div class="small muted">Зафиксируйте закупку зерна на 2 месяца · срочно</div></div><div style="text-align: right"><b class="num loss" style="font-size: 26px">−6 900 ₽/мес</b><div class="cap num">скорее всего −5 500…−8 800</div></div></div>
+<div class="risk" style="animation-delay: .95s"><span class="ic" style="background: #FDECEC; color: #D92D33; font-weight: 700">%</span><div><b style="font-size: 17px">Индексация аренды с 1 января</b><div class="small muted">Обсудите с арендодателем до 15 декабря</div></div><div style="text-align: right"><b class="num loss" style="font-size: 26px">−11 000 ₽/мес</b><div class="cap">по условиям договора</div></div></div>
+<div class="risk" style="animation-delay: 1.2s"><span class="ic" style="background: #E3F5EA; color: #0E8A43; font-weight: 700">₽</span><div><b style="font-size: 17px">Заседание ЦБ 18 декабря</b><div class="small muted">Не фиксируйте ставку по кредиту до решения</div></div><div style="text-align: right"><b class="num gain" style="font-size: 26px">до +2 100 ₽/мес</b><div class="cap">если ставку снизят на 1 п.п.</div></div></div>
+</div>
+</div>
+<div class="card a-rise spread" style="animation-delay: 1.5s"><div class="row" style="gap: 24px"><b>Ближайшие события</b><span class="small">18.12 · Заседание ЦБ</span><span class="small">01.01 · Индексация аренды</span><span class="small">Февраль · Новый год в Китае, поставщики закрыты</span></div><a href="app-calendar.html" class="small">Весь календарь</a></div>
+<div class="a-rise" style="animation-delay: 1.7s; border-radius: 24px; padding: 24px 28px; background: #0A1530; color: #fff; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap">
+<div><b style="font-size: 20px">Подключите Telegram — сигнал придёт, когда юань пересечёт ваш порог</b><p class="small" style="color: rgba(255,255,255,.7); margin-top: 4px">Первые 14 дней — все возможности тарифа «Бизнес» бесплатно. Не больше 3 сигналов в неделю.</p></div>
+<div class="row"><a class="btn btn-secondary" href="app-signal.html">Показать «почему»</a><a class="btn btn-primary" href="app.html">Подключить Telegram</a></div>
+</div>
+</div>
+</template>
+</div>
+</template>
+<script src="dc-lite.js"></script>
+<script src="page-signup-snapshot.js"></script>
+</body>
+</html>

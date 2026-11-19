@@ -1,0 +1,5 @@
+/* Экран: Кабинет — лента сигналов (C02-Signals) */
+body{margin:0;font-family:Onest,system-ui,sans-serif;color:#0B1A33}a{color:#1F5EFF}a:hover{color:#1747D6}
+.sig{animation:rise .4s var(--out) both;transition:box-shadow .3s,opacity .3s}
+.sig.snoozed{opacity:.55}
+.toast{position:fixed;left:50%;bottom:32px;transform:translateX(-50%);background:#0A1530;color:#fff;border-radius:999px;padding:12px 20px;display:flex;gap:16px;align-items:center;font-size:14px;animation:pop .35s var(--out) both;z-index:9}

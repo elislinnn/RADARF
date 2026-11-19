@@ -1,0 +1,8 @@
+/* Sidebar */
+body{margin:0;font-family:Onest,system-ui,sans-serif;color:#0B1A33}a{color:#1F5EFF}a:hover{color:#1747D6}
+
+/* TabBar */
+body{margin:0;font-family:Onest,system-ui,sans-serif;color:#0B1A33}a{color:#1F5EFF}a:hover{color:#1747D6}
+.tb{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:#6B7A93;font-size:11px;font-weight:500;padding-top:8px;position:relative}
+.tb.on{color:#1F5EFF}
+.tb .b{position:absolute;top:4px;left:calc(50% + 6px);min-width:16px;height:16px;border-radius:8px;background:#D92D33;color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center;padding:0 4px}

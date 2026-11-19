@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Вход — Антикризисный радар</title>
+<meta name="description" content="Антикризисный радар: сколько курс, ставка и цены стоят вашему бизнесу — в рублях прибыли.">
+<meta name="theme-color" content="#1F5EFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="radar.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="page-login.css">
+</head>
+<body class="page-login view-desktop">
+<div id="dc-app"></div>
+<noscript><p style="font-family:sans-serif;padding:24px">Для работы сайта включите JavaScript.</p></noscript>
+<template id="dc-root">
+<div style="display: flex; flex-wrap: wrap; min-height: 900px; background: #fff">
+<div style="flex: 1 1 560px; padding: 32px 48px; display: flex; flex-direction: column">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #0B1A33"><svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="11" fill="#1F5EFF"></rect><path d="M13 27V9h6.5a5.5 5.5 0 0 1 0 11H13" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg><b style="font-size: 17px">Антикризисный радар</b></a>
+<div style="flex: 1; display: flex; align-items: center; justify-content: center">
+<template data-dc="if" value="{{phoneStep}}">
+<form onSubmit="{{sendCode}}" class="a-rise" style="width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: 20px">
+<h1 class="h1">С возвращением</h1>
+<p class="body muted">Войдите по номеру телефона — пришлём код. Пароль не нужен.</p>
+<label class="field"><span class="label">Телефон</span><input class="input" type="tel" autocomplete="tel" value="{{phone}}" onChange="{{onPhone}}" placeholder="+7 (___) ___-__-__"></label>
+<button class="btn btn-primary btn-lg" type="submit" disabled="{{noPhone}}" style="opacity: {{btnOp}}">Получить код</button>
+<div class="row" style="justify-content: center; gap: 4px"><button class="btn btn-ghost btn-sm" type="button">Войти по почте</button><span class="muted">·</span><button class="btn btn-ghost btn-sm" type="button">Войти через Telegram</button></div>
+<div class="divider"></div>
+<p class="small muted" style="text-align: center">Ещё нет аккаунта? <a href="signup.html">Получить снимок бизнеса</a></p>
+</form>
+</template>
+<template data-dc="if" value="{{codeStep}}">
+<div class="a-rise" style="width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: 20px">
+<button class="btn btn-ghost btn-sm" onClick="{{back}}" style="align-self: flex-start; padding: 0">← Изменить номер</button>
+<h1 class="h1">Введите код</h1>
+<p class="body muted">Отправили SMS на {{phone}}</p>
+<div style="display: flex; gap: 12px">
+<template data-dc="for" list="{{cells}}" as="c"><input class="{{c.cls}}" inputmode="numeric" maxlength="1" autocomplete="one-time-code" aria-label="{{c.label}}" value="{{c.v}}" onChange="{{c.on}}"></template>
+</div>
+<template data-dc="if" value="{{err}}"><p class="small" style="color: #D92D33">Код не подошёл. Осталось попыток: 4. Подсказка для демо: 1812</p></template>
+<p class="small muted">Новый код через <span class="num">{{timer}}</span> · <button class="btn btn-ghost btn-sm" type="button" style="padding: 0; height: auto">Прислать в Telegram</button></p>
+<template data-dc="if" value="{{ok}}"><a class="btn btn-primary btn-lg a-pop" href="app.html">✓ Входим в кабинет</a></template>
+</div>
+</template>
+</div>
+<p class="cap">Не является индивидуальной инвестиционной рекомендацией · Данные хранятся в России</p>
+</div>
+<div style="flex: 1 1 520px; background: #1F5EFF; color: #fff; padding: 48px; display: flex; flex-direction: column; justify-content: center; gap: 24px; position: relative; overflow: hidden">
+<div style="position: absolute; right: -200px; top: -200px; width: 700px; height: 700px; border-radius: 50%; background: repeating-radial-gradient(circle,rgba(255,255,255,.12) 0 1px,transparent 1px 90px)"><div style="position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(rgba(255,255,255,.22),transparent 18%); animation: sweep 8s linear infinite"></div></div>
+<span class="chip" style="align-self: flex-start; background: rgba(255,255,255,.16); color: #fff; position: relative">Сегодня, 19 ноября</span>
+<h2 class="h2" style="color: #fff; position: relative; max-width: 440px">Пока вас не было, радар посчитал 2 новых сигнала</h2>
+<div class="card-sh a-pop" style="color: #0B1A33; max-width: 420px; position: relative; display: flex; flex-direction: column; gap: 8px; animation-delay: .4s">
+<span class="cap">Юань по курсу ЦБ</span>
+<div class="spread"><b class="num" style="font-size: 32px">12,38 ₽</b><span class="chip chip-loss">+2,8% за 30 дней</span></div>
+<svg viewBox="0 0 360 70" width="100%" height="70" aria-hidden="true"><polyline points="0,58 40,55 80,52 120,50 160,44 200,40 240,34 280,26 320,22 360,14" fill="none" stroke="#1F5EFF" stroke-width="2.5"></polyline></svg>
+</div>
+<div class="card-sh a-pop" style="color: #0B1A33; max-width: 420px; position: relative; display: flex; justify-content: space-between; align-items: center; animation-delay: .6s"><div><span class="cap">Ключевая ставка</span><div class="num" style="font-size: 28px; font-weight: 700">14%</div></div><span class="chip">заседание 18.12</span></div>
+</div>
+</div>
+</template>
+<script src="dc-lite.js"></script>
+<script src="page-login.js"></script>
+</body>
+</html>

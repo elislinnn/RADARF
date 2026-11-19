@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Кабинет — снимок бизнеса</title>
+<meta name="description" content="Антикризисный радар: сколько курс, ставка и цены стоят вашему бизнесу — в рублях прибыли.">
+<meta name="theme-color" content="#1F5EFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>(function(){var q=location.search;if(q.indexOf('view=desktop')<0&&window.innerWidth<768)location.replace('m-app.html'+q+location.hash);})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="radar.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="page-app.css">
+</head>
+<body class="page-app view-desktop">
+<div id="dc-app"></div>
+<noscript><p style="font-family:sans-serif;padding:24px">Для работы сайта включите JavaScript.</p></noscript>
+<template id="dc-root">
+<div class="app">
+<template data-dc="import" name="Sidebar" active="snapshot"></template>
+<main class="app-main">
+<div class="topbar">
+<div><h1 class="h3" style="font-size: 28px; line-height: 34px">Доброе утро, Анна</h1><p class="small muted">Четверг, 19 ноября · кофейня, Новосибирск, 2 точки · данные обновлены в 09:00</p></div>
+<div class="row" style="gap: 10px"><div class="pills"><button class="pill on">Обе точки</button><button class="pill">Академгородок</button><button class="pill">Центр</button></div><button class="icon-btn" aria-label="Уведомления"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg><span class="badge"></span></button><span class="avatar">А</span></div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+<div class="kpi" style="background: #1F5EFF; color: #fff; box-shadow: none"><span class="cap" style="color: rgba(255,255,255,.8)">Индекс давления</span><div class="spread"><span class="v num">64<span style="font-size: 16px; opacity: .7">/100</span></span><span class="chip" style="background: rgba(255,255,255,.18); color: #fff; height: 24px">+3 за неделю</span></div><svg viewBox="0 0 220 44" width="100%" height="44" aria-hidden="true"><path d="{{sparkIdx}}" fill="none" stroke="#fff" stroke-width="2" class="draw"></path></svg></div>
+<div class="kpi"><span class="cap">Прибыль, прогноз на декабрь</span><div class="spread"><span class="v num">125 000 ₽</span><span class="chip chip-loss" style="height: 24px">−3%</span></div><span class="cap num">вилка 80%: 112 000…136 000 ₽</span><svg viewBox="0 0 220 28" width="100%" height="28" aria-hidden="true"><path d="{{sparkProfit}}" fill="none" stroke="#1F5EFF" stroke-width="2" class="draw"></path></svg></div>
+<div class="kpi"><span class="cap">Запас по кассе</span><div class="spread"><span class="v num">1,5 мес</span><span class="chip chip-warn" style="height: 24px">ниже 2 мес</span></div><span class="cap">≈ 46 дней работы без выручки</span><div style="height: 8px; border-radius: 4px; background: #F4F7FC; margin-top: 8px"><div style="width: 50%; height: 100%; border-radius: 4px; background: #F5A524"></div></div><span class="cap">цель — 3 месяца</span></div>
+<div class="kpi"><span class="cap">Радар нашёл для вас</span><div class="spread"><span class="v num gain">≈ 9 000 ₽</span><span class="chip chip-gain" style="height: 24px">в месяц</span></div><span class="cap">7 сигналов · 3 применено · 1 ждёт решения</span><svg viewBox="0 0 220 28" width="100%" height="28" aria-hidden="true"><rect x="0" y="16" width="44" height="12" rx="3" fill="#E3F5EA"></rect><rect x="56" y="10" width="44" height="18" rx="3" fill="#B6E5C9"></rect><rect x="112" y="4" width="44" height="24" rx="3" fill="#0E8A43"></rect><rect x="168" y="0" width="44" height="28" rx="3" fill="#0E8A43"></rect></svg></div>
+</div>
+
+<div class="g2" style="grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr)">
+<div class="card">
+<div class="ttl"><b>Индекс давления за 12 недель</b><div class="pills"><template data-dc="for" list="{{ranges}}" as="r"><button class="{{r.cls}}" onClick="{{r.pick}}">{{r.t}}</button></template></div></div>
+<svg viewBox="0 0 640 230" width="100%" height="230" role="img" aria-label="Индекс давления по неделям: рост с 52 до 64">
+<defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1F5EFF" stop-opacity=".22"></stop><stop offset="1" stop-color="#1F5EFF" stop-opacity="0"></stop></linearGradient></defs>
+<line x1="34" y1="20" x2="640" y2="20" stroke="#EEF1F6"></line><line x1="34" y1="80" x2="640" y2="80" stroke="#EEF1F6"></line><line x1="34" y1="140" x2="640" y2="140" stroke="#EEF1F6"></line><line x1="34" y1="200" x2="640" y2="200" stroke="#E3E9F4"></line>
+<text class="ax" x="0" y="24">80</text><text class="ax" x="0" y="84">60</text><text class="ax" x="0" y="144">40</text><text class="ax" x="0" y="204">20</text>
+<rect x="34" y="20" width="606" height="60" fill="#FDECEC" opacity=".45"></rect><text class="ax" x="600" y="34" style="fill: #D92D33">зона риска</text>
+<path d="{{idxArea}}" fill="url(#ga)" class="fade"></path>
+<path d="{{idxLine}}" fill="none" stroke="#1F5EFF" stroke-width="3" stroke-linejoin="round" class="draw"></path>
+<template data-dc="for" list="{{idxPts}}" as="p"><circle cx="{{p.x}}" cy="{{p.y}}" r="{{p.r}}" fill="#fff" stroke="#1F5EFF" stroke-width="2.5" class="fade"></circle></template>
+<template data-dc="for" list="{{idxEvents}}" as="e"><g class="fade"><line x1="{{e.x}}" y1="{{e.y}}" x2="{{e.x}}" y2="200" stroke="#0B1A33" stroke-dasharray="3 4" opacity=".35"></line><rect x="{{e.lx}}" y="{{e.ly}}" width="{{e.w}}" height="22" rx="11" fill="#0B1A33"></rect><text x="{{e.tx}}" y="{{e.ty}}" style="font: 600 11px Onest, sans-serif; fill: #fff" text-anchor="middle">{{e.t}}</text></g></template>
+<template data-dc="for" list="{{weeks}}" as="w"><text class="ax" x="{{w.x}}" y="222" text-anchor="{{w.a}}">{{w.t}}</text></template>
+</svg>
+</div>
+<div class="card">
+<div class="ttl"><b>Из чего складывается индекс</b><span class="cap">вклад каналов</span></div>
+<div style="display: flex; gap: 20px; align-items: center">
+<svg viewBox="0 0 120 120" width="150" height="150" role="img" aria-label="Вклад каналов: валюта 38%, аренда 22%, ставка 18%, цены 12%, спрос 10%">
+<g transform="rotate(-90 60 60)"><template data-dc="for" list="{{donut}}" as="d"><circle cx="60" cy="60" r="46" fill="none" stroke="{{d.c}}" stroke-width="18" stroke-dasharray="{{d.da}}" stroke-dashoffset="{{d.off}}" class="fade"></circle></template></g>
+<text x="60" y="58" text-anchor="middle" style="font: 700 24px Onest, sans-serif; fill: #0B1A33">64</text><text x="60" y="74" text-anchor="middle" class="ax">из 100</text>
+</svg>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 8px"><template data-dc="for" list="{{donut}}" as="d"><div class="spread small"><span class="lg"><i style="background: {{d.c}}"></i>{{d.t}}</span><b class="num">{{d.p}}%</b></div></template></div>
+</div>
+<div class="divider" style="margin: 14px 0"></div>
+<p class="small muted">За неделю сильнее всего выросла <b style="color: #0B1A33">валюта</b> (+5 пунктов): юань пересёк ваш порог 2,5%.</p>
+</div>
+</div>
+
+<div class="g2" style="grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr)">
+<div class="card">
+<div class="ttl"><b>Прогноз прибыли на 6 месяцев</b><div class="row"><span class="lg"><i style="background: #1F5EFF"></i>медиана</span><span class="lg"><i style="background: #DCE6FF"></i>вилка 80%</span><span class="lg"><i style="background: #0E8A43"></i>если ЦБ снизит ставку</span></div></div>
+<svg viewBox="0 0 640 240" width="100%" height="240" role="img" aria-label="Прогноз прибыли с ноября по апрель: минимум в феврале около 108 тысяч рублей">
+<line x1="50" y1="20" x2="640" y2="20" stroke="#EEF1F6"></line><line x1="50" y1="80" x2="640" y2="80" stroke="#EEF1F6"></line><line x1="50" y1="140" x2="640" y2="140" stroke="#EEF1F6"></line><line x1="50" y1="200" x2="640" y2="200" stroke="#E3E9F4"></line>
+<text class="ax" x="0" y="24">160 тыс</text><text class="ax" x="0" y="84">130 тыс</text><text class="ax" x="0" y="144">100 тыс</text><text class="ax" x="0" y="204">70 тыс</text>
+<path d="{{fanBand}}" fill="#DCE6FF" class="fade"></path>
+<path d="{{fanOpt}}" fill="none" stroke="#0E8A43" stroke-width="2" stroke-dasharray="6 5" class="fade"></path>
+<path d="{{fanMid}}" fill="none" stroke="#1F5EFF" stroke-width="3" stroke-linejoin="round" class="draw"></path>
+<template data-dc="for" list="{{fanPts}}" as="p"><g class="fade"><circle cx="{{p.x}}" cy="{{p.y}}" r="4.5" fill="#1F5EFF"></circle><text x="{{p.x}}" y="{{p.ty}}" text-anchor="middle" style="font: 600 11px Onest, sans-serif; fill: #0B1A33">{{p.v}}</text><text class="ax" x="{{p.x}}" y="226" text-anchor="middle">{{p.m}}</text></g></template>
+<template data-dc="for" list="{{fanEv}}" as="e"><g class="fade"><path d="{{e.d}}" fill="{{e.c}}"></path><text x="{{e.x}}" y="{{e.ty}}" text-anchor="middle" style="font: 500 11px Onest, sans-serif; fill: {{e.c}}">{{e.t}}</text></g></template>
+</svg>
+<div class="row" style="justify-content: space-between"><span class="small muted">Минимум — в феврале: индексация аренды + перенос курса в прайс после окончания фиксации.</span><a class="btn btn-secondary btn-sm" href="app-forecast.html">Подробный прогноз</a></div>
+</div>
+<div class="card">
+<div class="ttl"><b>Куда уходит выручка</b><span class="cap num">1,5 млн ₽ в месяц</span></div>
+<div class="seg" role="img" aria-label="Структура выручки"><template data-dc="for" list="{{pl}}" as="s"><span style="width: {{s.w}}; background: {{s.c}}"></span></template></div>
+<div style="display: flex; flex-direction: column; gap: 4px; margin-top: 14px"><template data-dc="for" list="{{pl}}" as="s"><div class="spread small" style="padding: 4px 0"><span class="lg"><i style="background: {{s.c}}"></i>{{s.t}}</span><span><b class="num">{{s.v}}</b> <span class="muted num" style="display: inline-block; width: 44px; text-align: right">{{s.p}}</span></span></div></template></div>
+<div style="border-radius: 12px; background: #EEF3FF; padding: 10px 12px; margin-top: 10px" class="small">В юанях — <b>16% выручки</b>: каждый 1% курса = <b class="num">−2 460 ₽</b> прибыли</div>
+</div>
+</div>
+
+<div class="g2" style="grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr)">
+<div class="card">
+<div class="ttl"><b>Юань и ваш порог</b><a class="small" href="app-market.html">Рынок →</a></div>
+<div class="spread"><span class="num" style="font-size: 26px; font-weight: 700">12,39 ₽</span><span class="chip chip-loss">+2,8% за 30 дней</span></div>
+<svg viewBox="0 0 360 150" width="100%" height="150" role="img" aria-label="Курс юаня за 30 дней пересёк порог реакции 2,5%">
+<line x1="0" y1="{{thrY}}" x2="360" y2="{{thrY}}" stroke="#D92D33" stroke-dasharray="5 4"></line><text x="358" y="{{thrTy}}" text-anchor="end" style="font: 600 11px Onest, sans-serif; fill: #D92D33">порог +2,5% · 12,35 ₽</text>
+<path d="{{cnyArea}}" fill="#EEF3FF" class="fade"></path><path d="{{cnyLine}}" fill="none" stroke="#1F5EFF" stroke-width="2.5" class="draw"></path>
+<circle cx="{{crossX}}" cy="{{thrY}}" r="6" fill="#D92D33" class="fade"></circle><circle cx="{{crossX}}" cy="{{thrY}}" r="12" fill="none" stroke="#D92D33" opacity=".35" class="fade"></circle>
+<text class="ax" x="0" y="146">20 окт</text><text class="ax" x="360" y="146" text-anchor="end">19 ноя</text>
+</svg>
+<span class="cap">Курс ЦБ · в демо ряд сглажен</span>
+</div>
+<div class="card">
+<div class="ttl"><b>Чувствительность прибыли</b><span class="cap">₽ в месяц</span></div>
+<span class="cap">Если фактор вырастет на 1%</span>
+<template data-dc="for" list="{{sens}}" as="s"><div class="hrow" style="grid-template-columns: 110px 1fr 70px"><span>{{s.t}}</span><div style="background: #F4F7FC; border-radius: 4px"><div class="hb" style="width: {{s.w}}; background: #D92D33; animation-delay: {{s.d}}"></div></div><b class="num loss" style="text-align: right">{{s.v}}</b></div></template>
+<p class="small muted" style="margin-top: 6px">Зарплаты и поставщики в рублях весят больше юаня — но меняются реже</p>
+</div>
+<div class="card">
+<div class="ttl"><b>Сигналы и решения</b><span class="cap">по неделям</span></div>
+<svg viewBox="0 0 300 150" width="100%" height="150" role="img" aria-label="Сигналы по неделям и применённые решения">
+<template data-dc="for" list="{{sigBars}}" as="b"><g><rect x="{{b.x}}" y="{{b.y1}}" width="26" height="{{b.h1}}" rx="4" fill="#DCE6FF" class="fade"></rect><rect x="{{b.x2}}" y="{{b.y2}}" width="26" height="{{b.h2}}" rx="4" fill="#0E8A43" class="fade"></rect><text class="ax" x="{{b.lx}}" y="146" text-anchor="middle">{{b.t}}</text></g></template>
+</svg>
+<div class="row"><span class="lg"><i style="background: #DCE6FF"></i>получено</span><span class="lg"><i style="background: #0E8A43"></i>применено</span></div>
+<div class="spread small" style="margin-top: 10px"><span class="muted">Среднее время до решения</span><b>1,8 дня</b></div>
+</div>
+</div>
+
+<div class="g2" style="grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr)">
+<div class="card" style="padding-bottom: 12px">
+<div class="ttl" style="margin-bottom: 4px"><b>Главные риски и возможности</b><a class="small" href="app-signals.html">Все сигналы →</a></div>
+<a class="rk" href="app-signal.html"><span class="ch-ic" style="font-weight: 700">¥</span><div><b>Юань +2,8% за 30 дней</b><div class="small muted">Закупка зерна зафиксирована на 2 месяца · ✓ применено</div></div><div style="text-align: right"><b class="num loss" style="font-size: 18px">−6 900 ₽</b><div class="cap num">−5 500…−8 800</div></div></a>
+<a class="rk" href="app-signal.html"><span class="ch-ic" style="font-weight: 700">%</span><div><b>Индексация аренды с 1 января</b><div class="small muted">Обсудить до 15 декабря · <span style="color: #B76E00">ждёт решения</span></div></div><div style="text-align: right"><b class="num loss" style="font-size: 18px">−11 000 ₽</b><div class="cap">по договору</div></div></a>
+<a class="rk" href="app-what-if.html"><span class="ch-ic" style="font-weight: 700; background: #E3F5EA; color: #0E8A43">₽</span><div><b>Заседание ЦБ 18 декабря</b><div class="small muted">Не фиксировать ставку по кредиту до решения</div></div><div style="text-align: right"><b class="num gain" style="font-size: 18px">до +2 100 ₽</b><div class="cap">при −1 п.п.</div></div></a>
+<a class="rk" href="app-support.html"><span class="ch-ic" style="font-weight: 700; background: #E3F5EA; color: #0E8A43">✓</span><div><b>Программа поддержки подходит (пример)</b><div class="small muted">Льготная ставка на оборудование · 4 из 6 документов</div></div><div style="text-align: right"><span class="chip chip-gain">до 1 декабря</span></div></a>
+</div>
+<div class="card" style="padding-bottom: 12px">
+<div class="ttl" style="margin-bottom: 4px"><b>Ближайшие события</b><a class="small" href="app-calendar.html">Календарь →</a></div>
+<div class="ev"><span class="dt"><span style="font-size: 18px">15</span><span style="font-size: 10px; font-weight: 500">дек</span></span><div><b class="small">Срок: аренда</b><div class="cap">разговор с арендодателем</div></div><span class="chip chip-warn">через 26 дн</span></div>
+<div class="ev"><span class="dt"><span style="font-size: 18px">18</span><span style="font-size: 10px; font-weight: 500">дек</span></span><div><b class="small">Заседание Банка России</b><div class="cap">ставка по вашему кредиту</div></div><span class="chip chip-gain">+2 100 ₽</span></div>
+<div class="ev"><span class="dt"><span style="font-size: 18px">1</span><span style="font-size: 10px; font-weight: 500">янв</span></span><div><b class="small">Индексация аренды</b><div class="cap">из вашего профиля</div></div><span class="chip chip-loss">−11 000 ₽</span></div>
+<div class="ev"><span class="dt"><span style="font-size: 13px">фев</span></span><div><b class="small">Новый год в Китае</b><div class="cap">поставщики закрыты ~2 недели</div></div><span class="chip chip-grey">запас</span></div>
+<div class="spread" style="border-top: 1px solid #E3E9F4; padding-top: 12px"><div><b class="small">Точность профиля 72%</b><div class="cap">укажите запасы зерна — вилки сузятся</div></div><a class="btn btn-secondary btn-sm" href="app-profile.html">Уточнить</a></div>
+</div>
+</div>
+<p class="cap">Демо-данные кофейни. Курсы и ставка в шапке — Банк России; прогноз — 2 000 сценариев по диапазонам профиля. Не является индивидуальной инвестиционной рекомендацией.</p>
+</main>
+</div>
+</template>
+<script src="dc-lite.js"></script>
+<script src="comp-sidebar.js"></script>
+<script src="page-app.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+/* Экран: Онбординг, шаг 4 — Сохранить снимок (A06-Save) */
+body{margin:0;font-family:Onest,system-ui,sans-serif;color:#0B1A33}
+a{color:#1F5EFF}a:hover{color:#1747D6}
+.seg{flex:1;height:4px;border-radius:2px;background:#1F5EFF}

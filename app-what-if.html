@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Кабинет — что если</title>
+<meta name="description" content="Антикризисный радар: сколько курс, ставка и цены стоят вашему бизнесу — в рублях прибыли.">
+<meta name="theme-color" content="#1F5EFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>(function(){var q=location.search;if(q.indexOf('view=desktop')<0&&window.innerWidth<768)location.replace('m-app-what-if.html'+q+location.hash);})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="radar.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="page-app-what-if.css">
+</head>
+<body class="page-app-what-if view-desktop">
+<div id="dc-app"></div>
+<noscript><p style="font-family:sans-serif;padding:24px">Для работы сайта включите JavaScript.</p></noscript>
+<template id="dc-root">
+<div class="app">
+<template data-dc="import" name="Sidebar" active="whatif"></template>
+<main class="app-main">
+<div class="topbar"><div><h1 class="h3" style="font-size: 28px; line-height: 34px">Что если</h1><p class="small muted">Двигайте ползунки — прибыль пересчитывается по той же формуле, что и сигналы</p></div><button class="btn btn-secondary btn-sm" onClick="{{reset}}">Сбросить</button></div>
+<div style="display: grid; grid-template-columns: 420px minmax(0, 1fr); gap: 20px; align-items: start">
+<div class="card" style="display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-direction: column; gap: 8px"><span class="label">Сценарии Банка России</span>
+<div class="pills" style="display: flex"><template data-dc="for" list="{{scen}}" as="c"><button class="{{c.cls}}" onClick="{{c.pick}}" style="flex: 1">{{c.t}}</button></template></div>
+<span class="cap">По диапазонам среднесрочного прогноза ЦБ (ставка) и вашим порогам (курс)</span></div>
+<template data-dc="for" list="{{sliders}}" as="s">
+<label class="field"><span class="spread"><span class="label">{{s.t}}</span><b class="num">{{s.lbl}}</b></span><input class="rng" type="range" min="{{s.min}}" max="{{s.max}}" step="{{s.step}}" value="{{s.v}}" onChange="{{s.on}}"></label>
+</template>
+</div>
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div class="card-sh" style="border-radius: 24px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px">
+<div><span class="cap">Прибыль в месяц</span><div class="num" style="font-size: 36px; line-height: 40px; font-weight: 700">{{profit}} ₽</div><span class="{{dCls}}">{{delta}} ₽</span></div>
+<div><span class="cap">Безубыточная цена капучино</span><div class="num" style="font-size: 36px; line-height: 40px; font-weight: 700">{{be}} ₽</div><span class="small muted">при цене {{price}} ₽</span></div>
+<div><span class="cap">Запас по кассе</span><div class="num" style="font-size: 36px; line-height: 40px; font-weight: 700">{{cash}} мес</div><span class="small muted">из профиля: 1–2 мес</span></div>
+</div>
+<div class="card" style="display: flex; flex-direction: column; gap: 14px">
+<b style="font-size: 18px">Куда уходят и откуда приходят деньги</b>
+<template data-dc="for" list="{{flows}}" as="f">
+<div style="display: grid; grid-template-columns: 180px 1fr 130px; gap: 12px; align-items: center"><span class="small">{{f.t}}</span><div style="background: #F4F7FC; border-radius: 6px"><div class="bar" style="width: {{f.w}}; background: {{f.c}}"></div></div><b class="num small" style="text-align: right; color: {{f.c}}">{{f.v}}</b></div>
+</template>
+</div>
+<div class="card">
+<div class="spread" style="margin-bottom: 6px"><b style="font-size: 18px">Прибыль по месяцам: сценарий против «ничего не менять»</b><span class="{{sum6Cls}}">{{sum6}} ₽ за 6 мес</span></div>
+<svg viewBox="0 0 700 220" width="100%" height="220" role="img" aria-label="Прибыль по месяцам в сценарии и в базе">
+<template data-dc="for" list="{{mGrid}}" as="g"><line x1="56" y1="{{g.y}}" x2="700" y2="{{g.y}}" stroke="#EEF1F6"></line><text x="0" y="{{g.ty}}" style="font: 11px Onest, sans-serif; fill: #6B7A93">{{g.t}}</text></template>
+<path d="{{mArea}}" fill="{{mAreaC}}" opacity=".14"></path>
+<path d="{{mBase}}" fill="none" stroke="#8A97AD" stroke-width="2" stroke-dasharray="6 5"></path>
+<path d="{{mScen}}" fill="none" stroke="#1F5EFF" stroke-width="3.5" stroke-linejoin="round"></path>
+<template data-dc="for" list="{{mPts}}" as="p"><circle cx="{{p.x}}" cy="{{p.y}}" r="5" fill="#fff" stroke="#1F5EFF" stroke-width="3"></circle><text x="{{p.x}}" y="{{p.ty}}" text-anchor="middle" style="font: 600 11px Onest, sans-serif; fill: #0B1A33">{{p.v}}</text><text x="{{p.x}}" y="214" text-anchor="middle" style="font: 11px Onest, sans-serif; fill: #6B7A93">{{p.m}}</text></template>
+</svg>
+<div class="row small" style="gap: 16px"><span><span style="display: inline-block; width: 18px; border-top: 3px solid #1F5EFF; vertical-align: middle; margin-right: 6px"></span>ваш сценарий</span><span class="muted"><span style="display: inline-block; width: 18px; border-top: 2px dashed #8A97AD; vertical-align: middle; margin-right: 6px"></span>прогноз без изменений</span><span class="cap">аренда — с января, курс доходит до прайса за 1 месяц, ставка — после 18.12</span></div>
+</div>
+<div class="card" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; background: #EEF3FF; box-shadow: none">
+<div><b>Сохранить сценарий</b><div class="small muted">Радар пришлёт сигнал, если реальность пойдёт по нему</div></div>
+<div class="row"><button class="btn btn-secondary btn-sm">Спросить радар про сценарий</button><button class="btn btn-primary btn-sm" onClick="{{save}}">{{saveLbl}}</button></div>
+</div>
+<div class="row"><span class="cap">Сохранённые:</span><span class="chip chip-line">Юань +10% · 12.11</span><span class="chip chip-line">Ставка 12% · 05.11</span></div>
+</div>
+</div>
+</main>
+</div>
+</template>
+<script src="dc-lite.js"></script>
+<script src="comp-sidebar.js"></script>
+<script src="page-app-what-if.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Кабинет — календарь</title>
+<meta name="description" content="Антикризисный радар: сколько курс, ставка и цены стоят вашему бизнесу — в рублях прибыли.">
+<meta name="theme-color" content="#1F5EFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="radar.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="page-app-calendar.css">
+</head>
+<body class="page-app-calendar view-desktop">
+<div id="dc-app"></div>
+<noscript><p style="font-family:sans-serif;padding:24px">Для работы сайта включите JavaScript.</p></noscript>
+<template id="dc-root">
+<div class="app">
+<template data-dc="import" name="Sidebar" active="calendar"></template>
+<main class="app-main">
+<div class="topbar"><div><h1 class="h3" style="font-size: 28px; line-height: 34px">Календарь</h1><p class="small muted">События, которые касаются вашей кофейни — с эффектом в рублях</p></div>
+<div class="row"><div class="pills"><button class="pill on">Месяц</button><button class="pill">Список</button></div><button class="btn btn-secondary btn-sm">Добавить в мой календарь (.ics)</button></div></div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 20px; align-items: start">
+<div class="card">
+<div class="spread" style="margin-bottom: 12px"><b style="font-size: 20px">Декабрь 2026</b><div class="row"><button class="icon-btn" aria-label="Предыдущий месяц" style="width: 36px; height: 36px">‹</button><button class="icon-btn" aria-label="Следующий месяц" style="width: 36px; height: 36px">›</button></div></div>
+<div class="cal">
+<span class="dw">Пн</span><span class="dw">Вт</span><span class="dw">Ср</span><span class="dw">Чт</span><span class="dw">Пт</span><span class="dw">Сб</span><span class="dw">Вс</span>
+<template data-dc="for" list="{{days}}" as="d"><div class="{{d.cls}}"><span class="num">{{d.n}}</span><template data-dc="for" list="{{d.tags}}" as="t"><span class="{{t.cls}}">{{t.t}}</span></template></div></template>
+</div>
+<div class="row" style="margin-top: 14px"><span class="tag t-cb">Банк России</span><span class="tag t-tax">Налоги</span><span class="tag t-idx">Индексации</span><span class="tag t-sup">Поставщики и праздники</span></div>
+</div>
+<div class="card">
+<b style="font-size: 18px">Ближайшие</b>
+<div class="li"><span class="tag t-idx" style="align-self: start; text-align: center">15 дек</span><div><b>Срок: обсудить аренду</b><div class="small muted">До индексации 1 января · −11 000 ₽/мес</div><div class="spread" style="margin-top: 8px"><span class="cap">Напомнить за 7 и 1 день</span><span class="tg"></span></div></div></div>
+<div class="li"><span class="tag t-cb" style="align-self: start; text-align: center">18 дек</span><div><b>Заседание Банка России</b><div class="small muted">Ставка по вашему кредиту плавающая · до +2 100 ₽/мес</div><div class="spread" style="margin-top: 8px"><span class="cap">Напомнить за 1 день</span><span class="tg"></span></div></div></div>
+<div class="li"><span class="tag t-idx" style="align-self: start; text-align: center">1 янв</span><div><b>Индексация аренды</b><div class="small muted">Из вашего профиля</div><div class="spread" style="margin-top: 8px"><span class="cap">Напомнить</span><span class="tg"></span></div></div></div>
+<div class="li"><span class="tag t-sup" style="align-self: start; text-align: center">фев</span><div><b>Новый год в Китае</b><div class="small muted">Поставщики закрыты около 2 недель — запас зерна на февраль</div><div class="spread" style="margin-top: 8px"><span class="cap">Напомнить за 3 недели</span><span class="tg off"></span></div></div></div>
+<p class="cap" style="margin-top: 8px">Налоговые сроки подставляются по вашему режиму после уточнения в профиле</p>
+</div>
+</div>
+</main>
+</div>
+</template>
+<script src="dc-lite.js"></script>
+<script src="comp-sidebar.js"></script>
+<script src="page-app-calendar.js"></script>
+</body>
+</html>

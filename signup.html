@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Онбординг, шаг 1 — Расскажите о бизнесе</title>
+<meta name="description" content="Антикризисный радар: сколько курс, ставка и цены стоят вашему бизнесу — в рублях прибыли.">
+<meta name="theme-color" content="#1F5EFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>(function(){var q=location.search;if(q.indexOf('view=desktop')<0&&window.innerWidth<768)location.replace('m-signup.html'+q+location.hash);})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="radar.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="page-signup.css">
+</head>
+<body class="page-signup view-desktop">
+<div id="dc-app"></div>
+<noscript><p style="font-family:sans-serif;padding:24px">Для работы сайта включите JavaScript.</p></noscript>
+<template id="dc-root">
+<div style="min-height: 900px; background: #F4F7FC; display: flex; flex-direction: column">
+<header style="height: 72px; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; background: #fff; box-shadow: 0 1px 0 #E3E9F4">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #0B1A33"><svg width="32" height="32" viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="11" fill="#1F5EFF"></rect><path d="M13 27V9h6.5a5.5 5.5 0 0 1 0 11H13" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg><b>Антикризисный радар</b></a>
+<div style="display: flex; gap: 6px; width: 320px" aria-label="Шаг 1 из 4"><span class="seg on"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+<a class="btn btn-ghost btn-sm" href="login.html">Уже есть аккаунт</a>
+</header>
+<div style="flex: 1; display: flex; justify-content: center; padding: 64px 24px">
+<div style="width: 100%; max-width: 760px; display: flex; flex-direction: column; gap: 24px">
+<span class="eyebrow a-rise">Шаг 1 из 4 · около 1 минуты</span>
+<h1 class="h1 a-rise" style="animation-delay: .05s">Расскажите о бизнесе своими словами</h1>
+<p class="lead a-rise" style="animation-delay: .1s">Что продаёте, где, откуда закупаете, есть ли кредит. ИНН не нужен — радар сам разложит фразу в профиль.</p>
+<div class="card-sh a-rise" style="padding: 20px; display: flex; flex-direction: column; gap: 14px; animation-delay: .15s">
+<template data-dc="if" value="{{editing}}">
+<label class="field"><span class="label" style="position: absolute; left: -9999px">Описание бизнеса</span><textarea class="textarea" value="{{text}}" onChange="{{onText}}" placeholder="Например: две кофейни в Новосибирске, зерно из Китая, кредит 2,5 млн с плавающей ставкой" style="border: 0; padding: 4px; min-height: 140px; font-size: 20px; line-height: 30px"></textarea></label>
+</template>
+<template data-dc="if" value="{{reading}}">
+<p style="font-size: 20px; line-height: 30px; min-height: 140px; padding: 4px"><template data-dc="for" list="{{words}}" as="w"><span class="{{w.cls}}">{{w.t}} </span></template></p>
+</template>
+<div class="spread">
+<span class="cap">Можно надиктовать — нажмите микрофон на клавиатуре телефона</span>
+<span class="cap num">{{wc}} слов</span>
+</div>
+</div>
+<div class="row a-rise" style="animation-delay: .2s"><span class="cap">Примеры:</span>
+<template data-dc="for" list="{{examples}}" as="x"><button class="chip chip-line ex" onClick="{{x.pick}}">{{x.t}}</button></template>
+</div>
+<template data-dc="if" value="{{short}}"><p class="small" style="color: #B76E00">Добавьте, что продаёте и где — так радар поймёт отрасль.</p></template>
+<div class="spread a-rise" style="animation-delay: .25s">
+<div class="row"><button class="btn btn-secondary btn-sm" onClick="{{toggleSph}}">Выбрать сферу из списка</button><button class="btn btn-ghost btn-sm">Ускорить по ИНН</button></div>
+<template data-dc="if" value="{{notDone}}"><button class="btn btn-primary btn-lg" onClick="{{parse}}">{{parseLabel}}</button></template>
+<template data-dc="if" value="{{done}}"><a class="btn btn-primary btn-lg a-pop" href="signup-profile.html">Посмотреть, как мы поняли →</a></template>
+</div>
+<template data-dc="if" value="{{sph}}">
+<div class="sphere a-rise">
+<button class="sph"><span>Кофейня, кафе</span></button><button class="sph"><span>Пекарня</span></button><button class="sph"><span>Автозапчасти</span></button><button class="sph"><span>Автосервис</span></button><button class="sph"><span>Салон красоты</span></button><button class="sph"><span>Магазин у дома</span></button>
+<button class="sph"><span>Одежда</span></button><button class="sph"><span>Маркетплейсы</span></button><button class="sph"><span>Стройматериалы</span></button><button class="sph"><span>Мастерская</span></button><button class="sph"><span>Фермерство</span></button><button class="sph"><span>Другое</span></button>
+</div>
+</template>
+</div>
+</div>
+</div>
+</template>
+<script src="dc-lite.js"></script>
+<script src="page-signup.js"></script>
+</body>
+</html>

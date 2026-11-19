@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Кабинет — уведомления и пороги</title>
+<meta name="description" content="Антикризисный радар: сколько курс, ставка и цены стоят вашему бизнесу — в рублях прибыли.">
+<meta name="theme-color" content="#1F5EFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="radar.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="page-app-notifications.css">
+</head>
+<body class="page-app-notifications view-desktop">
+<div id="dc-app"></div>
+<noscript><p style="font-family:sans-serif;padding:24px">Для работы сайта включите JavaScript.</p></noscript>
+<template id="dc-root">
+<div class="app">
+<template data-dc="import" name="Sidebar" active="settings"></template>
+<main class="app-main">
+<div class="topbar"><div><h1 class="h3" style="font-size: 28px; line-height: 34px">Уведомления и пороги</h1><p class="small muted">Радар пишет только тогда, когда событие стоит больше вашего порога в рублях</p></div><button class="btn btn-primary">Сохранить</button></div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 20px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div class="card">
+<div class="spread"><b style="font-size: 18px">Пороги срабатывания</b><span class="cap">Меньше порог — больше сигналов</span></div>
+<template data-dc="for" list="{{thr}}" as="t">
+<div class="th"><div><b class="small">{{t.name}}</b><div class="cap">{{t.sub}}</div></div><div class="steps"><template data-dc="for" list="{{t.opts}}" as="o"><button class="{{o.cls}}" onClick="{{o.pick}}">{{o.t}}</button></template></div><div style="text-align: right"><b class="num">{{t.freq}}</b><div class="cap">сигналов в год</div></div></div>
+</template>
+</div>
+<div class="card">
+<div class="spread" style="margin-bottom: 6px"><b style="font-size: 18px">Сколько сигналов вы бы получили за последний год</b><span class="num" style="font-weight: 700">{{total}} всего</span></div>
+<svg viewBox="0 0 760 220" width="100%" height="220" role="img" aria-label="Сигналов в месяц при текущих порогах">
+<line x1="30" y1="{{limY}}" x2="760" y2="{{limY}}" stroke="#D92D33" stroke-dasharray="6 5"></line><text x="756" y="{{limTy}}" text-anchor="end" style="font: 600 11px Onest, sans-serif; fill: #D92D33">лимит {{lim}} в неделю ≈ {{limM}} в месяц</text>
+<template data-dc="for" list="{{bars}}" as="b"><rect x="{{b.x}}" y="{{b.y1}}" width="40" height="{{b.h1}}" fill="#1F5EFF" rx="4"></rect><rect x="{{b.x}}" y="{{b.y2}}" width="40" height="{{b.h2}}" fill="#93B4FF" rx="4"></rect><text class="ax" x="{{b.cx}}" y="214" text-anchor="middle">{{b.m}}</text><text x="{{b.cx}}" y="{{b.ty}}" text-anchor="middle" style="font: 600 11px Onest, sans-serif; fill: #0B1A33">{{b.v}}</text></template>
+</svg>
+<div class="row small" style="gap: 16px"><span><span style="display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: #1F5EFF; margin-right: 6px"></span>риски</span><span><span style="display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: #93B4FF; margin-right: 6px"></span>возможности</span><span class="muted">Пересчёт истории 2025–2026 по вашему профилю</span></div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div class="card"><b style="font-size: 18px">Каналы</b>
+<template data-dc="for" list="{{ch}}" as="c"><div class="chn"><div class="ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#1F5EFF" stroke-width="1.8"><path d="{{c.ic}}"></path></svg></div><div><b class="small">{{c.t}}</b><div class="cap">{{c.sub}}</div></div><button class="{{c.cls}}" onClick="{{c.tog}}" aria-label="{{c.t}}"></button></div></template>
+</div>
+<div class="card"><div class="spread"><b>Тихие часы</b><span class="num small">{{qFrom}}:00 – {{qTo}}:00</span></div>
+<div class="hr"><template data-dc="for" list="{{hours}}" as="h"><i class="{{h.c}}"></i></template></div>
+<div class="spread cap" style="margin-top: 4px"><span>0</span><span>6</span><span>12</span><span>18</span><span>24</span></div>
+<div class="row" style="margin-top: 10px"><button class="btn btn-secondary btn-sm" onClick="{{qMinus}}">Раньше</button><button class="btn btn-secondary btn-sm" onClick="{{qPlus}}">Позже</button></div>
+<p class="cap" style="margin-top: 8px">Срочные сигналы с дедлайном меньше 24 часов приходят и ночью.</p></div>
+<div class="card"><div class="spread"><b>Не больше в неделю</b><div class="row" style="gap: 6px"><button class="btn btn-secondary btn-sm" onClick="{{lMinus}}">−</button><b class="num" style="min-width: 24px; text-align: center">{{lim}}</b><button class="btn btn-secondary btn-sm" onClick="{{lPlus}}">+</button></div></div><p class="small muted" style="margin-top: 6px">Сверх лимита сигналы копятся в недельный дайджест — по понедельникам в 9:00.</p></div>
+<div class="card-blue"><span class="cap">Совет радара</span><p style="margin-top: 6px">{{tip}}</p></div>
+</div>
+</div>
+</main>
+</div>
+</template>
+<script src="dc-lite.js"></script>
+<script src="comp-sidebar.js"></script>
+<script src="page-app-notifications.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Кабинет — машина времени</title>
+<meta name="description" content="Антикризисный радар: сколько курс, ставка и цены стоят вашему бизнесу — в рублях прибыли.">
+<meta name="theme-color" content="#1F5EFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="radar.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="page-app-time-machine.css">
+</head>
+<body class="page-app-time-machine view-desktop">
+<div id="dc-app"></div>
+<noscript><p style="font-family:sans-serif;padding:24px">Для работы сайта включите JavaScript.</p></noscript>
+<template id="dc-root">
+<div class="app">
+<template data-dc="import" name="Sidebar" active="time"></template>
+<main class="app-main">
+<div class="topbar"><div><h1 class="h3" style="font-size: 28px; line-height: 34px">Машина времени</h1><p class="small muted">Радар «проигрывает» прошлое на профиле вашей кофейни: когда он выдал бы сигнал</p></div>
+<div class="pills"><template data-dc="for" list="{{presets}}" as="p"><button class="{{p.cls}}" onClick="{{p.pick}}">{{p.t}}</button></template></div></div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 20px; align-items: start">
+<div class="card" style="display: flex; flex-direction: column; gap: 14px">
+<div class="spread"><b style="font-size: 18px">Ключевая ставка Банка России, 2022–2024</b><span class="chip num">{{cur}}</span></div>
+<svg viewBox="0 0 740 260" width="100%" height="260" role="img" aria-label="Ключевая ставка Банка России с января 2022 по декабрь 2024">
+<line x1="30" y1="230" x2="740" y2="230" stroke="#E3E9F4"></line><line x1="30" y1="130" x2="740" y2="130" stroke="#E3E9F4" stroke-dasharray="3 4"></line><line x1="30" y1="30" x2="740" y2="30" stroke="#E3E9F4" stroke-dasharray="3 4"></line>
+<text x="0" y="134" font-size="11" fill="#6B7A93" font-family="Onest, system-ui, sans-serif">10%</text><text x="0" y="34" font-size="11" fill="#6B7A93" font-family="Onest, system-ui, sans-serif">20%</text>
+<text x="30" y="248" font-size="11" fill="#6B7A93" font-family="Onest, system-ui, sans-serif">2022</text><text x="267" y="248" font-size="11" fill="#6B7A93" font-family="Onest, system-ui, sans-serif">2023</text><text x="504" y="248" font-size="11" fill="#6B7A93" font-family="Onest, system-ui, sans-serif">2024</text>
+<path d="{{full}}" fill="none" stroke="#DCE6FF" stroke-width="3" stroke-linejoin="round"></path>
+<path d="{{played}}" fill="none" stroke="#1F5EFF" stroke-width="3" stroke-linejoin="round"></path>
+<template data-dc="for" list="{{marks}}" as="m"><path d="{{m.d}}" fill="#1F5EFF"></path></template>
+<line x1="{{x}}" y1="20" x2="{{x}}" y2="230" stroke="#0B1A33" stroke-width="1.5" stroke-dasharray="4 4"></line><circle cx="{{x}}" cy="{{y}}" r="7" fill="#fff" stroke="#1F5EFF" stroke-width="3"></circle>
+</svg>
+<div class="row" style="gap: 12px; flex-wrap: nowrap"><button class="btn btn-primary btn-sm" onClick="{{toggle}}" aria-label="{{playLbl}}" style="width: 96px">{{playLbl}}</button><button class="btn btn-secondary btn-sm" onClick="{{speed}}">{{speedLbl}}</button><label style="flex: 1"><span style="position: absolute; left: -9999px">Месяц</span><input class="rng" type="range" min="0" max="35" step="1" value="{{tm}}" onChange="{{onTm}}"></label></div>
+<span class="cap">Ромб — месяц, когда радар выдал бы сигнал по ставке. Сравнение с фактическим ростом цен по данным Росстата появится после расчёта на истории.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div class="card-blue"><span class="cap">Что радар сказал бы в этот месяц</span><b class="num" style="display: block; font-size: 28px; margin: 6px 0">Ставка {{rate}}</b><p class="body">{{text}}</p></div>
+<div class="card"><b>Сигналы, которые выдал бы радар</b><div class="feed" style="margin-top: 10px"><template data-dc="for" list="{{feed}}" as="f"><div class="fi"><span class="cap">{{f.d}}</span><div class="small"><b>{{f.t}}</b></div></div></template></div></div>
+<div class="card" style="background: #F4F7FC; box-shadow: none"><b>Опережение</b><p class="small muted" style="margin-top: 4px">Сколько недель радар опередил бы рост цен в вашей категории — посчитаем на истории до пилота. Это проверка направления и сроков, а не точности в рублях.</p></div>
+</div>
+</div>
+</main>
+</div>
+</template>
+<script src="dc-lite.js"></script>
+<script src="comp-sidebar.js"></script>
+<script src="page-app-time-machine.js"></script>
+</body>
+</html>

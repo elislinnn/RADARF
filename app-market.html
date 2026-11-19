@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Кабинет — рынок</title>
+<meta name="description" content="Антикризисный радар: сколько курс, ставка и цены стоят вашему бизнесу — в рублях прибыли.">
+<meta name="theme-color" content="#1F5EFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="radar.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="page-app-market.css">
+</head>
+<body class="page-app-market view-desktop">
+<div id="dc-app"></div>
+<noscript><p style="font-family:sans-serif;padding:24px">Для работы сайта включите JavaScript.</p></noscript>
+<template id="dc-root">
+<div class="app">
+<template data-dc="import" name="Sidebar" active="market"></template>
+<main class="app-main">
+<div class="topbar"><div><h1 class="h3" style="font-size: 28px; line-height: 34px">Рынок</h1><p class="small muted">Только показатели, которые двигают прибыль вашей кофейни. Нажмите на показатель — график ниже</p></div><div class="row"><div class="pills"><template data-dc="for" list="{{periods}}" as="p"><button class="{{p.cls}}" onClick="{{p.pick}}">{{p.t}}</button></template></div></div></div>
+<div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px">
+<template data-dc="for" list="{{tiles}}" as="t">
+<button class="{{t.cls}}" onClick="{{t.pick}}"><span class="cap">{{t.name}}</span><b class="num" style="font-size: 22px">{{t.val}}</b><span class="{{t.chgCls}}">{{t.chg}}</span><svg viewBox="0 0 140 36" width="100%" height="36" aria-hidden="true"><path d="{{t.spark}}" fill="none" stroke="{{t.sc}}" stroke-width="2"></path></svg><span class="cap">{{t.impact}}</span></button>
+</template>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 20px">
+<div class="card">
+<div class="spread" style="margin-bottom: 8px"><div><b style="font-size: 18px">{{cur.name}}</b><div class="cap">{{cur.src}}</div></div><div class="row"><span class="small muted"><span style="display: inline-block; width: 18px; height: 0; border-top: 2px dashed #D92D33; vertical-align: middle"></span> ваш порог</span><span class="small muted"><span style="display: inline-block; width: 10px; height: 10px; transform: rotate(45deg); background: #1F5EFF; margin-right: 6px"></span>сигнал радара</span></div></div>
+<template data-dc="for" list="{{chartKey}}" as="k">
+<svg viewBox="0 0 700 280" width="100%" height="280" role="img" aria-label="{{k.aria}}">
+<defs><linearGradient id="mg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1F5EFF" stop-opacity=".18"></stop><stop offset="1" stop-color="#1F5EFF" stop-opacity="0"></stop></linearGradient></defs>
+<template data-dc="for" list="{{grid}}" as="g"><line x1="50" y1="{{g.y}}" x2="700" y2="{{g.y}}" stroke="#EEF1F6"></line><text class="ax" x="0" y="{{g.ty}}">{{g.t}}</text></template>
+<rect x="50" y="{{bandY}}" width="650" height="{{bandH}}" fill="#FDECEC" opacity=".5"></rect>
+<line x1="50" y1="{{thrY}}" x2="700" y2="{{thrY}}" stroke="#D92D33" stroke-dasharray="6 5"></line>
+<path d="{{area}}" fill="url(#mg)"></path>
+<path d="{{line}}" fill="none" stroke="#1F5EFF" stroke-width="3" stroke-linejoin="round" class="draw"></path>
+<template data-dc="for" list="{{sigs}}" as="s"><path d="{{s.d}}" fill="#1F5EFF"></path></template>
+<circle cx="{{lastX}}" cy="{{lastY}}" r="6" fill="#fff" stroke="#1F5EFF" stroke-width="3"></circle>
+<template data-dc="for" list="{{xl}}" as="x"><text class="ax" x="{{x.x}}" y="272" text-anchor="middle">{{x.t}}</text></template>
+</svg>
+</template>
+<span class="cap">Ряды на экране — демонстрационные. На проде: Банк России, Мосбиржа, Росстат.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div class="card-blue"><span class="cap">Как это влияет на вас</span><b style="display: block; font-size: 18px; line-height: 25px; margin: 6px 0">{{cur.how}}</b><div class="spread" style="margin-top: 8px"><span class="small">Эффект при +1%</span><b class="num">{{cur.per1}}</b></div></div>
+<div class="card"><b>Ваш порог реакции</b><div class="spread" style="margin-top: 8px"><span class="num" style="font-size: 24px; font-weight: 700">{{cur.thr}}</span><a class="btn btn-secondary btn-sm" href="app-notifications.html">Изменить</a></div><p class="small muted" style="margin-top: 6px">{{cur.thrNote}}</p></div>
+<div class="card"><b>Сигналы по этому показателю</b><p class="small muted" style="margin-top: 6px">{{cur.sig}}</p><a class="small" href="app-signals.html">Открыть в ленте →</a></div>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 20px">
+<div class="card" style="padding: 20px 8px 8px">
+<b style="font-size: 18px; padding: 0 16px">Матрица влияния</b>
+<table class="mt" style="margin-top: 8px"><thead><tr><th>Показатель</th><th>Через что бьёт</th><th>₽ в месяц при +1%*</th><th style="width: 140px">Вес</th><th>Статус</th></tr></thead>
+<tbody>
+<template data-dc="for" list="{{matrix}}" as="m"><tr><td><b>{{m.name}}</b></td><td class="muted">{{m.ch}}</td><td class="num loss">{{m.v}}</td><td><div style="background: #F4F7FC; border-radius: 4px"><div class="bar" style="width: {{m.w}}"></div></div></td><td><span class="{{m.stCls}}">{{m.st}}</span></td></tr></template>
+</tbody></table>
+<p class="cap" style="padding: 10px 16px 6px">* для спроса — при снижении числа чеков на 1%. Считает та же формула, что и сигналы.</p>
+</div>
+<div class="card">
+<div class="spread"><b style="font-size: 18px">Новости, которые касаются вас</b><span class="chip chip-grey">2 из 40</span></div>
+<div class="nw" style="margin-top: 8px"><div><b class="small">Банк России опубликовал график заседаний на 2027 год</b><div class="cap">Добавили в ваш календарь · сегодня</div></div><span class="chip">календарь</span></div>
+<div class="nw"><div><b class="small">Поставщики кофе обновляют прайсы после роста юаня (демо)</b><div class="cap">Касается 42% вашей себестоимости · вчера</div></div><span class="chip chip-loss">важно</span></div>
+<div class="nw"><div><b class="small">Новые льготные программы для МСП в регионе (пример)</b><div class="cap">Проверили по ОКВЭД 56.10 · 2 дня назад</div></div><span class="chip chip-gain">подходит</span></div>
+<div class="nw"><div><b class="small">Рост цен на молочную продукцию в регионе (демо)</b><div class="cap">Росстат · 3 дня назад</div></div><span class="chip chip-warn">следим</span></div>
+<p class="cap" style="margin-top: 8px">Остальные 36 новостей недели радар отфильтровал как не влияющие на ваш бизнес.</p>
+</div>
+</div>
+</main>
+</div>
+</template>
+<script src="dc-lite.js"></script>
+<script src="comp-sidebar.js"></script>
+<script src="page-app-market.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+/* Экран: Кабинет — отчёт «Что радар дал вам» (C08-Report) */
+body{margin:0;font-family:Onest,system-ui,sans-serif;color:#0B1A33}a{color:#1F5EFF}a:hover{color:#1747D6}
+.tl{display:grid;grid-template-columns:90px 20px 1fr auto;gap:14px;align-items:start;padding:12px 0}
+.tl .d{font-size:13px;color:#6B7A93;padding-top:2px}
+.tl .p{width:12px;height:12px;border-radius:50%;margin-top:4px;background:#1F5EFF;box-shadow:0 0 0 4px #DCE6FF}
+.tl .p.g{background:#0E8A43;box-shadow:0 0 0 4px #E3F5EA}.tl .p.n{background:#C9D4E8;box-shadow:0 0 0 4px #F4F7FC}
+.pb{flex:1;border-radius:6px 6px 0 0;background:#1F5EFF;transform-origin:bottom;animation:grow .6s var(--out) both}
+@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}

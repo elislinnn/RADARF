@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Кабинет — лента сигналов</title>
+<meta name="description" content="Антикризисный радар: сколько курс, ставка и цены стоят вашему бизнесу — в рублях прибыли.">
+<meta name="theme-color" content="#1F5EFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>(function(){var q=location.search;if(q.indexOf('view=desktop')<0&&window.innerWidth<768)location.replace('m-app-signals.html'+q+location.hash);})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="radar.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="page-app-signals.css">
+</head>
+<body class="page-app-signals view-desktop">
+<div id="dc-app"></div>
+<noscript><p style="font-family:sans-serif;padding:24px">Для работы сайта включите JavaScript.</p></noscript>
+<template id="dc-root">
+<div class="app">
+<template data-dc="import" name="Sidebar" active="signals"></template>
+<main class="app-main">
+<div class="topbar">
+<div><h1 class="h3" style="font-size: 28px; line-height: 34px">Сигналы</h1><p class="small muted">Новые сверху · не больше 3 в неделю</p></div>
+<div class="row" style="gap: 10px"><span class="chip chip-gain num">Найдено ≈ {{found}} ₽/мес</span><span class="avatar">А</span></div>
+</div>
+<div class="pills" role="tablist" style="align-self: flex-start">
+<template data-dc="for" list="{{filters}}" as="f"><button class="{{f.cls}}" role="tab" onClick="{{f.pick}}">{{f.t}} <span class="num" style="opacity: .7">{{f.n}}</span></button></template>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 20px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<template data-dc="for" list="{{list}}" as="s">
+<article class="{{s.cls}}">
+<div class="spread"><span class="ev"><span class="ch-ic" style="font-weight: 700; background: {{s.icBg}}; color: {{s.icC}}">{{s.ic}}</span>{{s.ev}}</span><span class="row"><span class="{{s.urgCls}}">{{s.urg}}</span><span class="cap">{{s.date}}</span></span></div>
+<div class="spread" style="align-items: flex-end">
+<div><div class="{{s.effCls}}">{{s.eff}}</div><span class="cap num">{{s.fork}}</span></div>
+<div class="row">
+<template data-dc="if" value="{{s.isApplied}}"><span class="chip chip-gain">✓ Применено</span></template>
+<template data-dc="if" value="{{s.isSnoozed}}"><span class="chip chip-grey">Отложено до 26.11</span></template>
+<a class="btn btn-secondary btn-sm" href="app-signal.html">Почему?</a>
+<template data-dc="if" value="{{s.canAct}}"><button class="btn btn-ghost btn-sm" onClick="{{s.snooze}}">Отложить</button><button class="btn btn-primary btn-sm" onClick="{{s.apply}}">Применить</button></template>
+</div>
+</div>
+<span class="act">{{s.act}}</span>
+<span class="cap">Уверенность {{s.conf}} · {{s.src}}</span>
+</article>
+</template>
+<template data-dc="if" value="{{empty}}"><div class="card" style="text-align: center; padding: 48px"><b style="font-size: 18px">Здесь пока пусто</b><p class="small muted" style="margin-top: 6px">На этой неделе спокойно. Следующее событие — заседание ЦБ 18 декабря.</p></div></template>
+</div>
+<aside style="display: flex; flex-direction: column; gap: 14px; position: sticky; top: 24px">
+<div class="card"><div class="spread"><b>Статус сигналов</b><span class="cap">ноябрь</span></div>
+<div style="display: flex; height: 12px; border-radius: 6px; overflow: hidden; margin: 12px 0 10px; gap: 2px"><template data-dc="for" list="{{stBar}}" as="b"><div style="width: {{b.w}}; background: {{b.c}}; transition: width .4s"></div></template></div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px"><template data-dc="for" list="{{stBar}}" as="b"><span class="small"><span style="display: inline-block; width: 8px; height: 8px; border-radius: 2px; background: {{b.c}}; margin-right: 6px"></span>{{b.t}} <b class="num">{{b.n}}</b></span></template></div></div>
+<div class="card"><b>По каналам, ₽ в месяц</b>
+<div style="display: grid; grid-template-columns: 120px 1fr; gap: 14px; align-items: center; margin-top: 10px">
+<svg viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Распределение риска по каналам"><circle cx="60" cy="60" r="46" fill="none" stroke="#EEF1F6" stroke-width="16"></circle><template data-dc="for" list="{{donut}}" as="d"><circle cx="60" cy="60" r="46" fill="none" stroke="{{d.c}}" stroke-width="16" stroke-dasharray="{{d.da}}" stroke-dashoffset="{{d.off}}" transform="rotate(-90 60 60)"></circle></template><text x="60" y="58" text-anchor="middle" style="font: 700 15px Onest, sans-serif; fill: #0B1A33">{{riskSum}}</text><text x="60" y="74" text-anchor="middle" style="font: 11px Onest, sans-serif; fill: #6B7A93">под риском</text></svg>
+<div style="display: flex; flex-direction: column; gap: 6px"><template data-dc="for" list="{{donut}}" as="d"><div class="spread small"><span><span style="display: inline-block; width: 8px; height: 8px; border-radius: 2px; background: {{d.c}}; margin-right: 6px"></span>{{d.t}}</span><b class="num">{{d.v}}</b></div></template></div></div></div>
+<div class="card"><div class="spread"><b>Сигналы и найденные деньги</b><span class="cap">8 недель</span></div>
+<svg viewBox="0 0 300 150" width="100%" height="150" role="img" aria-label="Сигналов в неделю и накопленный найденный эффект">
+<template data-dc="for" list="{{wk}}" as="w"><rect x="{{w.x}}" y="{{w.y}}" width="22" height="{{w.h}}" rx="4" fill="#C2D4FF"></rect><text x="{{w.cx}}" y="{{w.ty}}" text-anchor="middle" style="font: 600 10px Onest, sans-serif; fill: #4A5A75">{{w.n}}</text><text x="{{w.cx}}" y="146" text-anchor="middle" style="font: 10px Onest, sans-serif; fill: #6B7A93">{{w.t}}</text></template>
+<path d="{{wkLine}}" fill="none" stroke="#0E8A43" stroke-width="2.5" stroke-linejoin="round"></path><circle cx="{{wkLx}}" cy="{{wkLy}}" r="4" fill="#0E8A43"></circle>
+</svg>
+<div class="spread small"><span class="muted"><span style="display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: #C2D4FF; margin-right: 6px"></span>сигналов</span><span class="gain">— найдено, накопительно</span></div></div>
+<div class="card" style="display: grid; grid-template-columns: 64px 1fr; gap: 14px; align-items: center"><svg viewBox="0 0 64 64" width="64" height="64" aria-label="Точность 72%"><circle cx="32" cy="32" r="26" fill="none" stroke="#EEF1F6" stroke-width="7"></circle><circle cx="32" cy="32" r="26" fill="none" stroke="#1F5EFF" stroke-width="7" stroke-linecap="round" stroke-dasharray="117.6 163.4" transform="rotate(-90 32 32)"></circle><text x="32" y="37" text-anchor="middle" style="font: 700 14px Onest, sans-serif; fill: #0B1A33">72%</text></svg><div><b class="small">Точность прогнозов</b><div class="cap">18 из 25 сигналов за 3 месяца попали в вилку. Отметьте, как сработал сигнал 12 ноября.</div></div></div>
+</aside>
+</div>
+<template data-dc="if" value="{{toast}}"><div class="toast" role="status">{{toastText}}<button class="btn btn-sm" onClick="{{undo}}" style="background: rgba(255,255,255,.14); color: #fff; height: 30px">Отменить</button></div></template>
+</main>
+</div>
+</template>
+<script src="dc-lite.js"></script>
+<script src="comp-sidebar.js"></script>
+<script src="page-app-signals.js"></script>
+</body>
+</html>

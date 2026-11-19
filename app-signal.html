@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Кабинет — сигнал и «Почему?»</title>
+<meta name="description" content="Антикризисный радар: сколько курс, ставка и цены стоят вашему бизнесу — в рублях прибыли.">
+<meta name="theme-color" content="#1F5EFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>(function(){var q=location.search;if(q.indexOf('view=desktop')<0&&window.innerWidth<768)location.replace('m-app-signal.html'+q+location.hash);})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="radar.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="page-app-signal.css">
+</head>
+<body class="page-app-signal view-desktop">
+<div id="dc-app"></div>
+<noscript><p style="font-family:sans-serif;padding:24px">Для работы сайта включите JavaScript.</p></noscript>
+<template id="dc-root">
+<div class="app">
+<template data-dc="import" name="Sidebar" active="signals"></template>
+<main class="app-main">
+<div class="topbar"><a class="btn btn-ghost btn-sm" href="app-signals.html" style="padding: 0">← Все сигналы</a><div class="row"><span class="chip chip-loss">Срочно</span><span class="cap">12 ноября, 09:40</span></div></div>
+<div class="spread" style="align-items: flex-end">
+<div style="display: flex; flex-direction: column; gap: 8px; max-width: 720px"><span class="eyebrow">Сигнал · валюта</span><h1 class="h2">Юань вырос на 2,8% за 30 дней: 12,05 → 12,39 ₽</h1><p class="body muted">Это выше вашего порога реакции 2,5%. Поставщики обычно обновляют прайс через 2–4 недели после движения курса.</p></div>
+<div style="text-align: right"><span class="cap">Эффект на прибыль</span><div class="num loss" style="font-size: 48px; line-height: 52px; font-weight: 700">−6 900 ₽/мес</div><span class="small muted num">скорее всего −5 500…−8 800 ₽</span></div>
+</div>
+<div class="card" style="display: flex; flex-direction: column; gap: 16px">
+<b style="font-size: 18px">Почему: от события до вашей прибыли</b>
+<div style="display: flex; align-items: center">
+<div class="node"><span class="cap">Событие</span><b>Юань +2,8%</b><span class="small muted">курс ЦБ за 30 дней</span></div><div class="lnk" style="animation-delay: .2s"></div>
+<div class="node" style="animation-delay: .35s"><span class="cap">Канал влияния</span><b>Закупки в юанях</b><span class="small muted">42% себестоимости</span></div><div class="lnk" style="animation-delay: .55s"></div>
+<div class="node" style="animation-delay: .7s"><span class="cap">Строка прибыли</span><b>Себестоимость</b><span class="small muted">39% выручки</span></div><div class="lnk" style="animation-delay: .9s"></div>
+<div class="node" style="animation-delay: 1.05s; background: #1F5EFF; color: #fff; box-shadow: none"><span class="cap" style="color: rgba(255,255,255,.8)">Эффект</span><b class="num" style="font-size: 20px">−6 900 ₽/мес</b><span class="small" style="opacity: .8">если поставщик переложит курс</span></div>
+</div>
+<div style="background: #F4F7FC; border-radius: 14px; padding: 14px 18px; font-size: 16px" class="num"><span class="muted">Формула:</span> <b>1 500 000 ₽ × 0,39 × 0,42 × 0,028 ≈ 6 900 ₽</b> <span class="muted">· выручка × доля себестоимости × доля юаня × рост курса</span></div>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 20px">
+<div class="card" style="display: flex; flex-direction: column; gap: 14px">
+<div class="spread"><b style="font-size: 18px">Вилка: 2 000 сценариев</b><span class="chip">80% — синим</span></div>
+<div style="display: flex; align-items: flex-end; gap: 3px; height: 150px">
+<template data-dc="for" list="{{bars}}" as="b"><div class="hb" style="height: {{b.h}}; background: {{b.c}}; animation-delay: {{b.d}}"></div></template>
+</div>
+<div class="spread num small"><span class="muted">−5 500 ₽</span><b>−6 900 ₽</b><span class="muted">−8 800 ₽</span></div>
+<div style="border-radius: 14px; background: #EEF3FF; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px"><div><b class="small">Что уточнить, чтобы вилка сузилась</b><div class="small muted">Сколько дней хватает запасов зерна — сузит вилку примерно на треть</div></div><a class="btn btn-primary btn-sm" href="app-profile.html">Уточнить</a></div>
+</div>
+<div class="card" style="display: flex; flex-direction: column; gap: 12px">
+<b style="font-size: 18px">Что сделать</b>
+<div style="border-radius: 14px; background: #E3F5EA; padding: 14px 16px"><b>Зафиксировать закупку зерна на 2 месяца по текущему прайсу</b><div class="small muted" style="margin-top: 4px">Цену в меню пока не менять: рост меньше 0,5% цены</div></div>
+<div style="border-radius: 14px; background: #F4F7FC; padding: 14px 16px"><span class="cap">Альтернатива</span><div class="small">Если курс превысит 12,7 ₽ — поднять цену капучино на 5 ₽. <a href="app-what-if.html">Пересчитать в «Что если»</a></div></div>
+<div class="kv"><span class="muted">Срочность</span><b>Высокая · 2–4 недели</b></div>
+<div class="kv"><span class="muted">Уверенность</span><b>0,82 — курс ЦБ надёжен, перенос в цену поставщика отраслевой</b></div>
+<div class="kv"><span class="muted">Источники</span><span><a href="#src">Банк России · официальный курс</a>, <a href="#src">Мосбиржа · CNY</a></span></div>
+<div class="row" style="margin-top: 4px"><button class="btn btn-primary">Применить</button><button class="btn btn-secondary">Отложить на неделю</button><button class="btn btn-ghost">Не актуально</button></div>
+</div>
+</div>
+<p class="cap">Текст подготовлен с помощью ИИ на основе расчёта. Не является индивидуальной инвестиционной рекомендацией.</p>
+</main>
+</div>
+</template>
+<script src="dc-lite.js"></script>
+<script src="comp-sidebar.js"></script>
+<script src="page-app-signal.js"></script>
+</body>
+</html>
